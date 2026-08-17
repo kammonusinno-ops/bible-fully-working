@@ -204,14 +204,56 @@ app.delete('/api/notes/:id', authenticateToken, async (req, res) => {
 // --- GAME LEADERBOARD API ---
 app.get('/api/games/leaderboard', async (req, res) => {
   try {
-    const result = await pool.query(`
-      SELECT u.username, g.game_name, g.score, g.created_at 
-      FROM game_scores g 
-      JOIN users u ON g.user_id = u.id 
-      ORDER BY g.score DESC 
+    const overallQuery = await pool.query(`
+      WITH best_scores AS (
+        SELECT user_id, game_name, MAX(score) AS best_score
+        FROM game_scores
+        GROUP BY user_id, game_name
+      )
+      SELECT u.username, SUM(b.best_score) AS total_score, COUNT(b.game_name) AS games_played
+      FROM best_scores b
+      JOIN users u ON b.user_id = u.id
+      GROUP BY u.id, u.username
+      ORDER BY total_score DESC, u.username ASC
       LIMIT 10
     `);
-    res.json(result.rows);
+
+    const triviaQuery = await pool.query(`
+      SELECT u.username, MAX(g.score) AS score
+      FROM game_scores g
+      JOIN users u ON g.user_id = u.id
+      WHERE g.game_name = 'Bible Trivia'
+      GROUP BY u.id, u.username
+      ORDER BY score DESC, u.username ASC
+      LIMIT 10
+    `);
+
+    const scrambleQuery = await pool.query(`
+      SELECT u.username, MAX(g.score) AS score
+      FROM game_scores g
+      JOIN users u ON g.user_id = u.id
+      WHERE g.game_name = 'Word Scramble'
+      GROUP BY u.id, u.username
+      ORDER BY score DESC, u.username ASC
+      LIMIT 10
+    `);
+
+    const verseQuery = await pool.query(`
+      SELECT u.username, MAX(g.score) AS score
+      FROM game_scores g
+      JOIN users u ON g.user_id = u.id
+      WHERE g.game_name = 'Guess the Verse'
+      GROUP BY u.id, u.username
+      ORDER BY score DESC, u.username ASC
+      LIMIT 10
+    `);
+
+    res.json({
+      overall: overallQuery.rows,
+      trivia: triviaQuery.rows,
+      scramble: scrambleQuery.rows,
+      verse: verseQuery.rows
+    });
   } catch (err) {
     console.error('Leaderboard error:', err);
     res.status(500).json({ error: 'Server error fetching leaderboard' });
