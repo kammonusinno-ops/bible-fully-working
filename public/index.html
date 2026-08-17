@@ -6,7 +6,7 @@
   <title>Holy Bible — Old &amp; New Testament</title> 
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0a1a0c">
-		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"> 
 		  <link rel="stylesheet" href="styles.css"> 
 	 <style type="text/css" id="dcoder_stylesheet">:root {
 	  --bg-grad-1: #061208;
@@ -18,8 +18,11 @@
 	  --accent-gold: #d4af37;
 	  --text-main: #f0ead6;
 	  --text-muted: #8ca88f;
-	  --input-bg: #142e17;
-	}
+  --input-bg: #142e17;
+  --font-interface: 'DM Sans', sans-serif;
+  --font-bible: 'Lora', Georgia, serif;
+  --font-ai: 'Plus Jakarta Sans', sans-serif;
+		}
 	body.theme-light {
 	  --bg-grad-1: #f4f6f4;
 	  --bg-grad-2: #e8ede8;
@@ -406,7 +409,53 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
 	.suggested-questions-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed rgba(201,168,76,0.3); }
 	.suggested-pill { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); border-radius: 20px; padding: 6px 14px; font-size: 13px; color: #d4b896; cursor: pointer; transition: all 0.2s ease; }
 	.suggested-pill:hover { background: #c9a84c; color: #0a1a0c; border-color: #c9a84c; transform: translateY(-1px); }
-	</style></head>
+
+    /* GLOBAL THEME + TYPOGRAPHY CONTROLS */
+    body, body * { font-family: var(--font-interface) !important; }
+    body { background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3)); color: var(--text-main); }
+    .verse-text, .verse-text * { font-family: var(--font-bible) !important; }
+    .bubble, .bubble * { font-family: var(--font-ai) !important; }
+    #top-nav { background: var(--nav-bg) !important; color: var(--text-main) !important; border-color: var(--border-color) !important; }
+    #assistive-touch { background: linear-gradient(135deg, var(--accent-gold), color-mix(in srgb, var(--accent-gold) 72%, var(--nav-bg))) !important; color: var(--nav-bg) !important; }
+    #assistive-menu { background: var(--card-bg) !important; border-color: var(--accent-gold) !important; color: var(--text-main) !important; }
+    #assistive-menu .assist-menu-item { color: var(--text-main) !important; }
+    #study-games-overlay { background: color-mix(in srgb, var(--bg-grad-1) 88%, transparent) !important; }
+    #study-games-overlay .api-popup-card { background: var(--card-bg) !important; border-color: var(--border-color) !important; color: var(--text-main) !important; }
+    #nav-logo, #home-bible-title { cursor: pointer; }
+    #nav-logo, .logo-star, .page-title, .card-label, .votd-ref, .stat-num, .verse-num, .bm-ref, .book-card-chapters { color: var(--accent-gold) !important; }
+    .page-hint, .votd-text, .book-card-desc, .chapter-lbl, .stat-lbl, .qa-empty-title, .qa-status { color: var(--text-muted) !important; }
+    .nav-tab, .chapter-num, .book-card-name, .chapter-lbl, .qa-input::placeholder { color: var(--text-main) !important; }
+    #page-qa.qa-reference-page { background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3)) !important; color: var(--text-main) !important; }
+    #page-verses::before { background: color-mix(in srgb, var(--bg-grad-1) 72%, transparent) !important; }
+    .qa-reference-page .qa-brand, .qa-reference-page .qa-hero p { color: var(--text-muted) !important; }
+    #nav-logo:focus, #home-bible-title:focus { outline: 2px solid var(--accent-gold); outline-offset: 4px; border-radius: 4px; }
+    .card, .stat-box, .book-card, .chapter-card, .api-popup-card, .qa-settings-card { background: var(--card-bg) !important; border-color: var(--border-color) !important; color: var(--text-main) !important; }
+    #home-hero { background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3)) !important; color: var(--text-main) !important; border-color: var(--border-color) !important; }
+    .page-title, #home-hero h1, .book-card-name, .chapter-num, .qa-settings-title, .qa-input, .qa-reference-page .page-title { color: var(--text-main) !important; }
+    .page-hint, #home-hero p, .book-card-desc, .stat-lbl, .loading-msg, .qa-empty, .qa-status { color: var(--text-muted) !important; }
+    .text-input, .filter-input, .translation-select, .qa-model-select, .qa-provider-select, .qa-key-input, .qa-input, .search-row input { background: var(--input-bg) !important; color: var(--text-main) !important; border-color: var(--border-color) !important; }
+    .primary-btn, .nav-tab.active { background: var(--accent-gold) !important; color: var(--nav-bg) !important; }
+    .ghost-btn, .back-btn, .nav-arrow, .testament-tab, .quick-book-btn { color: var(--accent-gold) !important; border-color: var(--border-color) !important; }
+    .verse-row { background: color-mix(in srgb, var(--card-bg) 82%, transparent) !important; border-color: var(--border-color) !important; }
+    .verse-row:hover, .verse-row.bookmarked { background: color-mix(in srgb, var(--accent-gold) 14%, var(--card-bg)) !important; }
+    .verse-text { font-family: var(--font-bible) !important; color: var(--text-main) !important; }
+    .bubble { font-family: var(--font-ai) !important; color: var(--text-main) !important; }
+    .answer-heading, .suggested-questions-container { font-family: var(--font-ai) !important; }
+    #qa-settings.qa-global-settings { position: fixed; top: 76px; left: 20px; z-index: 260; width: min(440px, calc(100vw - 40px)); max-height: calc(100vh - 94px); overflow-y: auto; margin: 0; }
+    .settings-field-label { display: block; color: var(--text-muted); font: 600 11px/1.2 var(--font-interface); letter-spacing: .04em; text-transform: uppercase; }
+    .verse-tools { display: flex; align-items: center; gap: 8px; flex-shrink: 0; padding-top: 1px; }
+    .tts-btn { width: 30px; height: 30px; border: 1px solid var(--border-color); border-radius: 50%; background: transparent; color: var(--accent-gold); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; transition: transform .16s ease-out, background .16s ease-out, color .16s ease-out; }
+    .tts-btn:hover, .tts-btn.speaking { background: var(--accent-gold); color: var(--nav-bg); transform: scale(1.05); }
+    .tts-btn:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+    .assistive-menu-follow { transform-origin: center bottom; }
+    @media (max-width: 560px) { #qa-settings.qa-global-settings { top: 68px; left: 10px; width: calc(100vw - 20px); max-height: calc(100vh - 80px); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    #offline-indicator { position: fixed; left: 50%; bottom: 16px; z-index: 10020; transform: translate(-50%, 120px); opacity: 0; pointer-events: none; max-width: min(92vw, 560px); padding: 10px 14px; border: 1px solid var(--border-color); border-radius: 999px; background: var(--card-bg); color: var(--text-main); box-shadow: 0 10px 30px rgba(0,0,0,.35); font-size: 12px; line-height: 1.35; text-align: center; transition: transform .22s cubic-bezier(.23,1,.32,1), opacity .22s ease; }
+    #offline-indicator.is-visible { transform: translate(-50%, 0); opacity: 1; }
+    #offline-indicator.is-offline { border-color: #e4a93a; }
+    #offline-indicator.is-online { border-color: #4ade80; }
+    .offline-card { border: 1px solid var(--border-color); background: color-mix(in srgb, var(--accent-gold) 8%, var(--card-bg)); border-radius: 12px; padding: 12px; margin-top: 12px; color: var(--text-muted); font-size: 12px; line-height: 1.5; }
+		</style></head>
 	<body>
   <!-- AUTHENTICATION & CONNECTORS MODAL -->
   <div id="auth-modal-overlay">
@@ -458,7 +507,7 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
    </div>
   </div>
   <header id="top-nav" style="display:none;"> 
-   <div id="nav-logo">
+   <div id="nav-logo" role="button" tabindex="0" aria-label="Open Bible settings" title="Open Bible settings">
     <span class="logo-star">✦</span> Holy Bible
    </div> 
    <nav id="nav-tabs"> 
@@ -473,6 +522,7 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
    </nav> 
   </header>
   </header> 
+  <div id="offline-indicator" role="status" aria-live="polite"></div>
   <main id="app"> <!-- HOME --> 
    <!-- BIBLE NOTES PAGE -->
    <section id="page-notes" class="page">
@@ -508,7 +558,7 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
    <div id="assistive-touch" style="position: fixed; bottom: 80px; right: 20px; width: 56px; height: 56px; background: linear-gradient(135deg, #c9a84c, #b38f27); border-radius: 50%; box-shadow: 0 6px 20px rgba(0,0,0,0.6); z-index: 9998; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #0a1a0c; font-size: 24px; font-weight: bold; touch-action: none;" title="Quick Hub (Study & Games)">
     ✦
    </div>
-   <div id="assistive-menu" style="position: fixed; bottom: 146px; right: 20px; background: #112213; border: 1.5px solid #c9a84c; border-radius: 16px; padding: 12px; z-index: 9998; display: none; flex-direction: column; gap: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 220px;">
+   <div id="assistive-menu" class="assistive-menu-follow" style="position: fixed; bottom: 146px; right: 20px; background: #112213; border: 1.5px solid #c9a84c; border-radius: 16px; padding: 12px; z-index: 9998; display: none; flex-direction: column; gap: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 220px;">
     <div style="font-size: 11px; font-weight: 700; color: #c9a84c; text-transform: uppercase; margin-bottom: 4px; border-bottom: 1px solid #1e3d20; padding-bottom: 4px;">Quick Actions</div>
     <button type="button" onclick="openStudyModal('study')" style="background: transparent; border: none; color: #e8dfc8; text-align: left; padding: 8px; font-size: 13px; cursor: pointer; border-radius: 6px;" class="assist-menu-item">📖 Monthly Bible Study</button>
     <button type="button" onclick="openStudyModal('games')" style="background: transparent; border: none; color: #e8dfc8; text-align: left; padding: 8px; font-size: 13px; cursor: pointer; border-radius: 6px;" class="assist-menu-item">🎮 Bible Trivia & Games</button>
@@ -518,7 +568,7 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
    <section id="page-home" class="page active"> 
     <div class="page-inner"> 
      <div id="home-hero"> 
-      <h1>Welcome to the<br><span>Holy Bible</span></h1> 
+      <h1>Welcome to the<br><span id="home-bible-title" role="button" tabindex="0" title="Open Bible settings">Holy Bible</span></h1> 
       <p>Read, search, bookmark, and explore the Old and New Testament in your preferred language.</p> 
      </div> 
      <div class="card" id="votd-card"> 
@@ -701,8 +751,8 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
        <p>Try: "Who was Jesus?" or "What is the meaning of Psalm 23?"</p> 
       </div> 
      </div> 
-      <div id="qa-settings" class="qa-settings-card" aria-label="AI connector settings">
-       <div class="qa-settings-heading"><span class="qa-settings-title">✨ AI &amp; Theme Hub</span><button class="qa-close-btn" id="qa-settings-close" type="button" aria-label="Close connector menu">×</button></div>
+      <div id="qa-settings" class="qa-settings-card qa-global-settings" aria-label="Bible app settings">
+       <div class="qa-settings-heading"><span class="qa-settings-title">⚙ Bible App Settings</span><button class="qa-close-btn" id="qa-settings-close" type="button" aria-label="Close connector menu">×</button></div>
        <div class="qa-settings-section">
         <div class="qa-section-label">App Theme</div>
         <select class="qa-model-select" id="theme-select" onchange="changeTheme(this.value)" style="width: 100%; margin-top: 4px;">
@@ -712,6 +762,37 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
          <option value="bloom">🌸 Summer Bloom</option>
          <option value="lavender">💜 Lavender</option>
          <option value="ocean">🌊 Ocean</option>
+        </select>
+       </div>
+       <div class="qa-settings-section">
+        <div class="qa-section-label">Typography</div>
+        <label class="settings-field-label" for="interface-font-select">Main interface</label>
+        <select class="qa-model-select" id="interface-font-select" onchange="changeFont('interface', this.value)" style="width: 100%; margin: 4px 0 10px;">
+         <option value="DM Sans">DM Sans — clean and modern</option>
+         <option value="Nunito Sans">Nunito Sans — warm and friendly</option>
+         <option value="Source Sans 3">Source Sans 3 — highly readable</option>
+         <option value="Atkinson Hyperlegible">Atkinson Hyperlegible — accessible</option>
+         <option value="Plus Jakarta Sans">Plus Jakarta Sans — polished</option>
+         <option value="Lora">Lora — literary</option>
+        </select>
+        <label class="settings-field-label" for="bible-font-select">Bible text</label>
+        <select class="qa-model-select" id="bible-font-select" onchange="changeFont('bible', this.value)" style="width: 100%; margin: 4px 0 10px;">
+         <option value="Lora">Lora — classic serif</option>
+         <option value="Merriweather">Merriweather — comfortable reading</option>
+         <option value="Libre Baskerville">Libre Baskerville — traditional</option>
+         <option value="Crimson Text">Crimson Text — devotional</option>
+         <option value="Cormorant Garamond">Cormorant Garamond — elegant</option>
+         <option value="Playfair Display">Playfair Display — expressive</option>
+         <option value="Noto Serif">Noto Serif — balanced</option>
+        </select>
+        <label class="settings-field-label" for="ai-font-select">AI response</label>
+        <select class="qa-model-select" id="ai-font-select" onchange="changeFont('ai', this.value)" style="width: 100%; margin-top: 4px;">
+         <option value="Plus Jakarta Sans">Plus Jakarta Sans — polished</option>
+         <option value="DM Sans">DM Sans — clean and modern</option>
+         <option value="Source Sans 3">Source Sans 3 — highly readable</option>
+         <option value="Nunito Sans">Nunito Sans — conversational</option>
+         <option value="Atkinson Hyperlegible">Atkinson Hyperlegible — accessible</option>
+         <option value="JetBrains Mono">JetBrains Mono — technical</option>
         </select>
        </div>
        <div class="qa-settings-section">
@@ -754,7 +835,7 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
       </div>
       <form id="qa-form" class="qa-composer"> 
        <div class="qa-input-row"> 
-        <button class="qa-bot-btn" id="qa-bot-btn" type="button" aria-label="Open Bible chatbot" title="Bible chatbot">✦</button><input class="qa-input" id="qa-input" placeholder="Ask the Bible chatbot…"><button class="qa-send-btn" id="qa-send-btn" type="submit" aria-label="Send question">➤</button>
+        <input class="qa-input" id="qa-input" placeholder="Ask the Bible chatbot…"><button class="qa-send-btn" id="qa-send-btn" type="submit" aria-label="Send question">➤</button>
        </div> 
       </form>
     </div> 
@@ -876,6 +957,18 @@ function normalizeChapterContent(content, book, chapter) {
 }
 
 
+function chapterCacheKey(translation, bookName, chapter) {
+  return "bible_chapter_cache_v1_" + [translation, bookName, chapter].join("_").replace(/[^a-z0-9_-]/gi, "_");
+}
+
+function readCachedChapter(translation, bookName, chapter) {
+  return readOfflineJson(chapterCacheKey(translation, bookName, chapter), null);
+}
+
+function writeCachedChapter(translation, bookName, chapter, verses) {
+  writeOfflineJson(chapterCacheKey(translation, bookName, chapter), { saved_at: new Date().toISOString(), verses: verses });
+}
+
 async function fetchChapter(book, chapter) {
   const config = TRANSLATIONS[currentTranslation] || TRANSLATIONS.kjv;
   if (config.api === "local_csb" || config.api === "local_ilokano") {
@@ -895,10 +988,23 @@ async function fetchChapter(book, chapter) {
     const data = window._localBibleCache[config.api][key] || [];
     return data.map(v => ({ ...v, book_name: book.name, chapter: chapter, book_id: apiBook(book.name) }));
   }
-  const res = await fetch(BIBLE_API + "/" + config.api + "/" + apiBook(book.name) + "/" + chapter + ".json");
-  if (!res.ok) throw new Error("Translation unavailable");
-  const data = await res.json();
-  return normalizeChapterContent(data.chapter && data.chapter.content, book, chapter);
+  const cacheKey = chapterCacheKey(currentTranslation, book.name, chapter);
+  try {
+    if (!navigator.onLine) throw new Error("offline");
+    const res = await fetch(BIBLE_API + "/" + config.api + "/" + apiBook(book.name) + "/" + chapter + ".json");
+    if (!res.ok) throw new Error("Translation unavailable");
+    const data = await res.json();
+    const verses = normalizeChapterContent(data.chapter && data.chapter.content, book, chapter);
+    if (verses.length) writeCachedChapter(currentTranslation, book.name, chapter, verses);
+    return verses;
+  } catch (error) {
+    const cached = readCachedChapter(currentTranslation, book.name, chapter);
+    if (cached && Array.isArray(cached.verses)) {
+      setOfflineStatus("Showing this chapter from your offline cache.", "offline", false);
+      return cached.verses;
+    }
+    throw error;
+  }
 }
 
 const BOOK_CATEGORIES = {
@@ -1071,6 +1177,7 @@ function updateHomeStats() {
 }
 
 function changeTranslation() {
+  stopVerseSpeech();
   currentTranslation = document.getElementById("translation-select").value;
   localStorage.setItem("bible_translation", currentTranslation);
   if (selectedBook) loadVerses();
@@ -1243,6 +1350,46 @@ async function loadVerses() {
   document.getElementById("chapter-loading").style.display = "none";
 }
 
+function isEnglishTranslation() {
+  const config = TRANSLATIONS[currentTranslation];
+  return !!(config && /English/i.test(config.label || ""));
+}
+
+let activeSpeechButton = null;
+
+function stopVerseSpeech() {
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  if (activeSpeechButton) {
+    activeSpeechButton.classList.remove("speaking");
+    activeSpeechButton.textContent = "🔊";
+    activeSpeechButton.setAttribute("aria-label", "Listen to verse");
+    activeSpeechButton = null;
+  }
+}
+
+function speakVerse(text, button) {
+  if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+    alert("Text-to-Speech is not supported by this browser.");
+    return;
+  }
+  if (activeSpeechButton === button) {
+    stopVerseSpeech();
+    return;
+  }
+  stopVerseSpeech();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-US";
+  utterance.rate = 0.92;
+  utterance.pitch = 1;
+  activeSpeechButton = button;
+  button.classList.add("speaking");
+  button.textContent = "■";
+  button.setAttribute("aria-label", "Stop reading verse");
+  utterance.onend = stopVerseSpeech;
+  utterance.onerror = stopVerseSpeech;
+  window.speechSynthesis.speak(utterance);
+}
+
 function renderVerses(verses) {
   const container = document.getElementById("verses-container");
   container.innerHTML = "";
@@ -1255,7 +1402,22 @@ function renderVerses(verses) {
     const bm  = bookmarks.some(function(b) { return b.key === key; });
     const row = document.createElement("div");
     row.className = "verse-row" + (bm ? " bookmarked" : "");
-    row.innerHTML = '<span class="verse-num">' + v.verse + '</span><span class="verse-text">' + v.text.trim() + '</span><span class="bm-icon">' + (bm ? "★" : "☆") + '</span>';
+    row.innerHTML = '<span class="verse-num">' + escapeHtml(v.verse) + '</span><span class="verse-text"></span><span class="verse-tools"><span class="bm-icon">' + (bm ? "★" : "☆") + '</span></span>';
+    row.querySelector(".verse-text").textContent = v.text.trim();
+    const tools = row.querySelector(".verse-tools");
+    if (isEnglishTranslation()) {
+      const ttsButton = document.createElement("button");
+      ttsButton.type = "button";
+      ttsButton.className = "tts-btn";
+      ttsButton.textContent = "🔊";
+      ttsButton.setAttribute("aria-label", "Listen to verse");
+      ttsButton.title = "Listen to this verse";
+      ttsButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        speakVerse(v.text.trim(), ttsButton);
+      });
+      tools.appendChild(ttsButton);
+    }
     row.addEventListener("click", (function(verse, r, k) {
       return function() { toggleBookmark(verse, r, k); };
     })(v, row, key));
@@ -1400,8 +1562,12 @@ document.getElementById("qa-form").addEventListener("submit", async function(e) 
   appendBubble("user", msg);
   qaMessages.push({ role: "user", content: msg });
   if (!apiKey) {
-    appendBubble("assistant", "Add your " + (provider === "openrouter" ? "OpenRouter API key" : "Hugging Face token") + " above before asking. It stays in memory only for this session.");
+    appendBubble("assistant", "Add your " + (provider === "openrouter" ? "OpenRouter API key" : "Hugging Face token") + " in Bible App Settings. Click the Holy Bible title at the top to open settings.");
     keyInput.focus();
+    return;
+  }
+  if (!navigator.onLine) {
+    appendBubble("assistant", "You are currently offline. The Bible reader, cached chapters, notes, and games still work, but AI answers need an internet connection. Your question remains in this chat so you can send it when you reconnect.");
     return;
   }
   qaLoading = true;
@@ -1466,9 +1632,9 @@ document.getElementById("qa-form").addEventListener("submit", async function(e) 
     clearInterval(processInterval);
     thinkingEl.remove();
     const detail = err && err.name === "AbortError" ? "The request timed out after 45 seconds." : (err && err.message ? err.message : "Unknown provider error.");
-    let fixGuide = "How to fix:\n1. Check your API key or token in AI Settings (tap ✦ icon).\n2. Ensure your model selection is valid.\n3. Verify your internet connection or try switching to OpenRouter free models.";
+    let fixGuide = "How to fix:\n1. Check your API key or token in Bible App Settings by clicking the Holy Bible title.\n2. Ensure your model selection is valid.\n3. Verify your internet connection or try switching to an OpenRouter free model.";
     if (detail.includes("401") || detail.includes("Unauthorized") || detail.includes("API key")) {
-      fixGuide = "Fix: Your API key/token is missing or invalid. Open AI Settings and paste a valid key.";
+      fixGuide = "Fix: Your API key/token is missing or invalid. Click the Holy Bible title to open Bible App Settings and paste a valid key.";
     } else if (detail.includes("429") || detail.includes("Rate limit")) {
       fixGuide = "Fix: You have hit the rate limit or quota. Please wait a moment or switch to a free model on OpenRouter.";
     }
@@ -1535,14 +1701,29 @@ function askSuggestedQuestion(q) {
   document.getElementById("qa-form").dispatchEvent(new Event("submit"));
 }
 
-const chatbotButton = document.getElementById("qa-bot-btn");
-if (chatbotButton) chatbotButton.addEventListener("click", function() {
+function toggleBibleSettings() {
   const settings = document.getElementById("qa-settings");
-  if (settings) settings.classList.toggle("is-open");
-  document.getElementById("qa-input").focus();
-});
+  if (!settings) return;
+  const opening = !settings.classList.contains("is-open");
+  settings.classList.toggle("is-open", opening);
+  if (opening) {
+    syncAiProviderUi();
+    const themeSelect = document.getElementById("theme-select");
+    if (themeSelect) setTimeout(function() { themeSelect.focus(); }, 0);
+  }
+}
+const navLogo = document.getElementById("nav-logo");
+if (navLogo) {
+  navLogo.addEventListener("click", toggleBibleSettings);
+  navLogo.addEventListener("keydown", function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleBibleSettings(); } });
+}
+const homeBibleTitle = document.getElementById("home-bible-title");
+if (homeBibleTitle) {
+  homeBibleTitle.addEventListener("click", toggleBibleSettings);
+  homeBibleTitle.addEventListener("keydown", function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleBibleSettings(); } });
+}
 const settingsClose = document.getElementById("qa-settings-close");
-if (settingsClose) settingsClose.addEventListener("click", function() { document.getElementById("qa-settings").classList.remove("is-open"); document.getElementById("qa-input").focus(); });
+if (settingsClose) settingsClose.addEventListener("click", function() { document.getElementById("qa-settings").classList.remove("is-open"); });
 
 function appendBubble(role, text) {
   const msgs = document.getElementById("qa-messages");
@@ -1564,10 +1745,26 @@ function appendBubble(role, text) {
 let isRegisterMode = false;
 
 function changeTheme(themeName) {
+  const knownThemes = ["forest", "light", "dark", "bloom", "lavender", "ocean"];
+  if (knownThemes.indexOf(themeName) === -1) themeName = "forest";
   document.body.className = themeName === "forest" ? "" : "theme-" + themeName;
   localStorage.setItem("bible_theme", themeName);
   const select = document.getElementById("theme-select");
   if (select) select.value = themeName;
+}
+
+function changeFont(category, fontName) {
+  const fontMap = {
+    interface: "--font-interface",
+    bible: "--font-bible",
+    ai: "--font-ai"
+  };
+  const variable = fontMap[category];
+  if (!variable || !fontName) return;
+  document.documentElement.style.setProperty(variable, "'" + fontName.replace(/'/g, "") + "'");
+  localStorage.setItem("bible_font_" + category, fontName);
+  const select = document.getElementById(category === "interface" ? "interface-font-select" : category === "bible" ? "bible-font-select" : "ai-font-select");
+  if (select) select.value = fontName;
 }
 
 function loadSavedTheme() {
@@ -1575,10 +1772,17 @@ function loadSavedTheme() {
   changeTheme(saved);
 }
 
+function loadSavedFonts() {
+  changeFont("interface", localStorage.getItem("bible_font_interface") || "DM Sans");
+  changeFont("bible", localStorage.getItem("bible_font_bible") || "Lora");
+  changeFont("ai", localStorage.getItem("bible_font_ai") || "Plus Jakarta Sans");
+}
+
 function showApp() {
   document.getElementById("auth-modal-overlay").style.display = "none";
   document.getElementById("top-nav").style.display = "flex";
   document.body.style.overflow = "auto";
+  updateOfflineIndicator(false);
 }
 
 function handleLogout() {
@@ -1636,6 +1840,11 @@ async function handleAuthSubmit(event) {
   errorDiv.style.display = "none";
   const endpoint = isRegisterMode ? "/api/auth/register" : "/api/auth/login";
 
+  if (!navigator.onLine) {
+    errorDiv.textContent = "You are offline. Sign in or register once you reconnect; cached Scripture and local study tools remain available after that.";
+    errorDiv.style.display = "block";
+    return;
+  }
   try {
     const res = await fetch(endpoint, {
       method: "POST",
@@ -1646,7 +1855,9 @@ async function handleAuthSubmit(event) {
     if (!res.ok) throw new Error(data.error || "Authentication failed");
 
     localStorage.setItem("bible_token", data.token);
+    if (data.user && data.user.username) localStorage.setItem("bible_username", data.user.username);
     showApp();
+    flushOfflineQueue();
     
     // Populate settings with returned keys
     if (data.user.openrouter_key) {
@@ -1663,16 +1874,26 @@ async function handleAuthSubmit(event) {
 }
 
 async function fetchUserProfile(token) {
+  if (!navigator.onLine) {
+    showApp();
+    updateOfflineIndicator(false);
+    return;
+  }
   try {
-    const res = await fetch("/api/user/profile", {
-      headers: { "Authorization": "Bearer " + token }
-    });
+    const res = await fetch("/api/user/profile", { headers: { "Authorization": "Bearer " + token } });
     if (!res.ok) throw new Error("Session expired");
     const user = await res.json();
+    if (user.username) localStorage.setItem("bible_username", user.username);
     if (user.openrouter_key) document.getElementById("openrouter-key").value = user.openrouter_key;
     if (user.huggingface_key) document.getElementById("huggingface-key").value = user.huggingface_key;
     showApp();
+    flushOfflineQueue();
   } catch (err) {
+    if (!navigator.onLine) {
+      showApp();
+      updateOfflineIndicator(false);
+      return;
+    }
     localStorage.removeItem("bible_token");
     showAuth();
   }
@@ -1682,6 +1903,11 @@ async function loadOpenRouterModels() {
   const select = document.getElementById("openrouter-model");
   const status = document.getElementById("openrouter-status");
   if (!select) return;
+  if (!navigator.onLine) {
+    status.textContent = "Offline: the saved model selection remains available, but the live model catalog needs a connection.";
+    select.disabled = false;
+    return;
+  }
   select.disabled = true;
   status.textContent = "Loading available OpenRouter text models…";
   try {
@@ -1732,6 +1958,11 @@ function clearOpenRouterKey() {
 
 async function saveKeysToAccount() {
   const token = localStorage.getItem("bible_token");
+  if (!navigator.onLine) {
+    const offlineStatus = document.getElementById("save-keys-status");
+    if (offlineStatus) offlineStatus.textContent = "Connect to the internet to save API keys to your account.";
+    return;
+  }
   if (!token) {
     alert("Please log in first.");
     return;
@@ -1771,11 +2002,33 @@ const assistMenu = document.getElementById("assistive-menu");
 let isDragging = false;
 let startX, startY, initialX, initialY;
 
+function positionAssistMenu() {
+  if (!assistTouch || !assistMenu || assistMenu.style.display !== "flex") return;
+  const ball = assistTouch.getBoundingClientRect();
+  const menuWidth = assistMenu.offsetWidth || 220;
+  const menuHeight = assistMenu.offsetHeight || 180;
+  const gap = 10;
+  const margin = 8;
+  let left = ball.left + (ball.width / 2) - (menuWidth / 2);
+  let top = ball.top - menuHeight - gap;
+  if (top < margin) top = ball.bottom + gap;
+  left = Math.max(margin, Math.min(left, window.innerWidth - menuWidth - margin));
+  top = Math.max(margin, Math.min(top, window.innerHeight - menuHeight - margin));
+  assistMenu.style.left = left + "px";
+  assistMenu.style.top = top + "px";
+  assistMenu.style.right = "auto";
+  assistMenu.style.bottom = "auto";
+}
+
 assistTouch.addEventListener("click", function(e) {
   if (!isDragging) {
-    assistMenu.style.display = assistMenu.style.display === "flex" ? "none" : "flex";
+    const opening = assistMenu.style.display !== "flex";
+    assistMenu.style.display = opening ? "flex" : "none";
+    if (opening) requestAnimationFrame(positionAssistMenu);
   }
 });
+
+window.addEventListener("resize", positionAssistMenu);
 
 assistTouch.addEventListener("mousedown", dragStart);
 assistTouch.addEventListener("touchstart", dragStart, {passive: true});
@@ -1802,8 +2055,8 @@ function drag(e) {
   
   assistTouch.style.right = "auto";
   assistTouch.style.bottom = "auto";
-  assistTouch.style.left = (initialX + dx) + "px";
-  assistTouch.style.top = (initialY + dy) + "px";
+  assistTouch.style.top = Math.max(8, Math.min(initialY + dy, window.innerHeight - assistTouch.offsetHeight - 8)) + "px";
+  assistTouch.style.left = Math.max(8, Math.min(initialX + dx, window.innerWidth - assistTouch.offsetWidth - 8)) + "px";
   assistMenu.style.display = "none";
 }
 
@@ -1812,6 +2065,7 @@ function dragEnd() {
   document.removeEventListener("touchmove", drag);
   document.removeEventListener("mouseup", dragEnd);
   document.removeEventListener("touchend", dragEnd);
+  setTimeout(function() { isDragging = false; }, 0);
 }
 
 // --- STUDY & GAMES MODAL LOGIC ---
@@ -1839,42 +2093,40 @@ function openStudyModal(type) {
       </div>
     `;
   } else if (type === "games") {
-    title.textContent = "🎮 Bible Trivia Challenge";
+    title.textContent = "🎮 Bible Game Center";
     body.innerHTML = `
-      <div id="trivia-container" style="font-size: 14px; color: #e8dfc8;">
-        <p id="trivia-q" style="font-size: 16px; font-weight: 700; color: #c9a84c; margin-bottom: 14px;">Question: Who built the ark according to God's instructions?</p>
-        <div id="trivia-options" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
-          <button class="ghost-btn" type="button" onclick="answerTrivia(false)" style="text-align: left; padding: 10px;">A) Moses</button>
-          <button class="ghost-btn" type="button" onclick="answerTrivia(true)" style="text-align: left; padding: 10px;">B) Noah</button>
-          <button class="ghost-btn" type="button" onclick="answerTrivia(false)" style="text-align: left; padding: 10px;">C) Abraham</button>
+      <div style="font-size: 14px; color: #e8dfc8;">
+        <p style="color: #7a9e7e; margin-bottom: 14px; text-align: center;">Choose your game mode and test your biblical knowledge!</p>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+          <button class="primary-btn" type="button" onclick="startTriviaGame()" style="padding: 14px; text-align: left; display: flex; justify-content: space-between; align-items: center; width: 100%; cursor: pointer;">
+            <span>🎮 Bible Trivia Challenge</span> <span style="font-size: 12px; opacity: 0.8;">8 Qs • +100pts</span>
+          </button>
+          <button class="primary-btn" type="button" onclick="startScrambleGame()" style="padding: 14px; text-align: left; display: flex; justify-content: space-between; align-items: center; width: 100%; background: #2d5a36; cursor: pointer;">
+            <span>🔤 Bible Word Scramble</span> <span style="font-size: 12px; opacity: 0.8;">Anagrams • +150pts</span>
+          </button>
+          <button class="primary-btn" type="button" onclick="startVerseGame()" style="padding: 14px; text-align: left; display: flex; justify-content: space-between; align-items: center; width: 100%; background: #3b5249; cursor: pointer;">
+            <span>📜 Guess the Verse</span> <span style="font-size: 12px; opacity: 0.8;">References • +120pts</span>
+          </button>
         </div>
-        <div id="trivia-result" style="font-weight: 700; margin-bottom: 10px;"></div>
       </div>
     `;
-  } else if (type === "games") {
-    title.textContent = "🎮 Bible Trivia & Challenges";
-    body.innerHTML = `
-      <div id="trivia-container" style="font-size: 14px; color: #e8dfc8;">
-        <div id="trivia-quiz-box">
-          <p id="trivia-q" style="font-size: 16px; font-weight: 700; color: #c9a84c; margin-bottom: 14px;"></p>
-          <div id="trivia-options" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;"></div>
-          <div id="trivia-result" style="font-weight: 700; margin-bottom: 10px;"></div>
-        </div>
-        <button class="ghost-btn" type="button" onclick="nextTriviaQuestion()" style="width: 100%; padding: 10px; margin-top: 10px;">Next Question ➔</button>
-      </div>
-    `;
-    loadTriviaQuestion();
   } else if (type === "leaderboard") {
     title.textContent = "🏆 Global Game Leaderboard";
     body.innerHTML = `
       <div style="font-size: 14px; color: #e8dfc8;">
-        <p style="color: #7a9e7e; margin-bottom: 12px;">Top Bible Scholars & Trivia Champions (Real Players):</p>
-        <div id="leaderboard-list" style="background: #0d1f0f; border: 1px solid #1e3d20; border-radius: 10px; padding: 12px;">
-          <p style="color: #7a9e7e; text-align: center;">Loading leaderboard...</p>
+        <div style="display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap;">
+          <button class="primary-btn" type="button" onclick="switchLeaderboardTab('overall')" id="lb-tab-overall" style="padding: 6px 10px; font-size: 12px; cursor: pointer; flex: 1; background: #c9a84c; color: #0a1a0c;">Overall</button>
+          <button class="ghost-btn" type="button" onclick="switchLeaderboardTab('trivia')" id="lb-tab-trivia" style="padding: 6px 10px; font-size: 12px; cursor: pointer; flex: 1;">Trivia</button>
+          <button class="ghost-btn" type="button" onclick="switchLeaderboardTab('scramble')" id="lb-tab-scramble" style="padding: 6px 10px; font-size: 12px; cursor: pointer; flex: 1;">Scramble</button>
+          <button class="ghost-btn" type="button" onclick="switchLeaderboardTab('verse')" id="lb-tab-verse" style="padding: 6px 10px; font-size: 12px; cursor: pointer; flex: 1;">Verse</button>
+        </div>
+        <div id="leaderboard-list" style="background: #0d1f0f; border: 1px solid #1e3d20; border-radius: 10px; padding: 12px; min-height: 200px;">
+          <p style="color: #7a9e7e; text-align: center; padding: 20px;">Loading global leaderboard...</p>
         </div>
       </div>
     `;
-    loadRealLeaderboard();
+    globalLeaderboardData = null;
+    loadRealLeaderboard('overall');
   }
 }
 
@@ -1893,59 +2145,493 @@ const TRIVIA_POOL = [
   { q: "What is the shortest verse in the Bible?", options: ["Jesus wept.", "God is love.", "Rejoice always.", "Pray continually."], correct: 0 }
 ];
 let currentTriviaIdx = 0;
+let triviaSessionScore = 0;
+let triviaScoreSaved = false;
 
 function loadTriviaQuestion() {
-  const item = TRIVIA_POOL[currentTriviaIdx % TRIVIA_POOL.length];
-  document.getElementById("trivia-q").textContent = "Question " + (currentTriviaIdx + 1) + ": " + item.q;
+  if (currentTriviaIdx >= TRIVIA_POOL.length) {
+    // Save the finished session once so the leaderboard records a true high score.
+    if (!triviaScoreSaved) {
+      triviaScoreSaved = true;
+      saveGameScore("Bible Trivia", triviaSessionScore);
+    }
+    document.getElementById("trivia-quiz-box").innerHTML = `
+      <div style="text-align: center; padding: 20px;">
+        <h3 style="color: #c9a84c; margin-bottom: 10px; font-size: 20px;">🎉 Quiz Completed!</h3>
+        <p style="color: #e8dfc8; font-size: 16px; margin-bottom: 16px;">You scored <strong style="color: #4ade80;">${triviaSessionScore}</strong> points total!</p>
+        <button class="primary-btn" type="button" onclick="restartTrivia()" style="width: 100%; padding: 10px;">Play Again ↻</button>
+      </div>
+    `;
+    return;
+  }
+  const item = TRIVIA_POOL[currentTriviaIdx];
+  const qEl = document.getElementById("trivia-q");
   const optsDiv = document.getElementById("trivia-options");
-  document.getElementById("trivia-result").textContent = "";
+  const resDiv = document.getElementById("trivia-result");
+  if (qEl) qEl.textContent = "Question " + (currentTriviaIdx + 1) + " of " + TRIVIA_POOL.length + ": " + item.q;
+  if (resDiv) resDiv.textContent = "";
   
-  optsDiv.innerHTML = item.options.map(function(opt, idx) {
-    return `<button class="ghost-btn" type="button" onclick="answerTrivia(${idx === item.correct})" style="text-align: left; padding: 10px;">${String.fromCharCode(65 + idx)}) ${opt}</button>`;
-  }).join("");
+  if (optsDiv) {
+    optsDiv.innerHTML = item.options.map(function(opt, idx) {
+      return `<button class="ghost-btn trivia-opt-btn" type="button" onclick="answerTrivia(${idx === item.correct}, this)" style="text-align: left; padding: 10px;">${String.fromCharCode(65 + idx)}) ${opt}</button>`;
+    }).join("");
+  }
 }
 
-function nextTriviaQuestion() {
-  currentTriviaIdx++;
+function answerTrivia(isCorrect, btnElement) {
+  const resDiv = document.getElementById("trivia-result");
+  // Disable all options after answering
+  const allBtns = document.querySelectorAll(".trivia-opt-btn");
+  allBtns.forEach(function(b) { b.disabled = true; });
+
+  if (isCorrect) {
+    triviaSessionScore += 100;
+    if (resDiv) {
+      resDiv.style.color = "#4ade80";
+      resDiv.textContent = "✓ Correct! +100 points.";
+    }
+  } else {
+    if (resDiv) {
+      resDiv.style.color = "#f87171";
+      resDiv.textContent = "✗ Incorrect!";
+    }
+  }
+
+  // Auto advance after 1.2 seconds
+  setTimeout(function() {
+    currentTriviaIdx++;
+    loadTriviaQuestion();
+  }, 1200);
+}
+
+function restartTrivia() {
+  currentTriviaIdx = 0;
+  triviaSessionScore = 0;
+  triviaScoreSaved = false;
+  const box = document.getElementById("trivia-quiz-box");
+  if (box) {
+    box.innerHTML = `
+      <p id="trivia-q" style="font-size: 16px; font-weight: 700; color: #c9a84c; margin-bottom: 14px;"></p>
+      <div id="trivia-options" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;"></div>
+      <div id="trivia-result" style="font-weight: 700; margin-bottom: 10px;"></div>
+    `;
+  }
   loadTriviaQuestion();
 }
 
-function answerTrivia(isCorrect) {
-  const resDiv = document.getElementById("trivia-result");
-  if (isCorrect) {
+function startTriviaGame() {
+  currentTriviaIdx = 0;
+  triviaSessionScore = 0;
+  triviaScoreSaved = false;
+  const body = document.getElementById("study-games-body");
+  body.innerHTML = `
+    <div id="trivia-container" style="font-size: 14px; color: #e8dfc8;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <button class="ghost-btn" type="button" onclick="openStudyModal('games')" style="padding: 4px 8px; font-size: 12px; cursor: pointer;">← Back to Games</button>
+        <span style="color: #7a9e7e; font-size: 12px;" id="trivia-progress"></span>
+      </div>
+      <div id="trivia-quiz-box">
+        <p id="trivia-q" style="font-size: 16px; font-weight: 700; color: #c9a84c; margin-bottom: 14px;"></p>
+        <div id="trivia-options" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;"></div>
+        <div id="trivia-result" style="font-weight: 700; margin-bottom: 10px; text-align: center;"></div>
+      </div>
+    </div>
+  `;
+  loadTriviaQuestion();
+}
+
+// --- BIBLE WORD SCRAMBLE GAME ---
+const SCRAMBLE_POOL = [
+  { word: "GENESIS", hint: "The first book of the Bible" },
+  { word: "ABRAHAM", hint: "Father of many nations" },
+  { word: "MESSIAH", hint: "The Anointed One, Savior" },
+  { word: "GOLGOTA", hint: "Place of the Skull where Jesus was crucified" },
+  { word: "EXODUS", hint: "Book detailing the departure from Egypt" },
+  { word: "SALVATION", hint: "Deliverance from sin and its consequences" },
+  { word: "DISCIPLE", hint: "A follower or student of Jesus" },
+  { word: "REVELATION", hint: "The final book of the New Testament" }
+];
+let currentScrambleIdx = 0;
+let scrambleScore = 0;
+let scrambleScoreSaved = false;
+let currentScrambledWord = "";
+let currentOriginalWord = "";
+
+function startScrambleGame() {
+  currentScrambleIdx = 0;
+  scrambleScore = 0;
+  scrambleScoreSaved = false;
+  loadScrambleQuestion();
+}
+
+function scrambleWord(str) {
+  let arr = str.split("");
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  let scrambled = arr.join("");
+  if (scrambled === str && str.length > 1) return scrambleWord(str);
+  return scrambled;
+}
+
+function loadScrambleQuestion() {
+  const body = document.getElementById("study-games-body");
+  if (currentScrambleIdx >= SCRAMBLE_POOL.length) {
+    if (!scrambleScoreSaved) {
+      scrambleScoreSaved = true;
+      saveGameScore("Word Scramble", scrambleScore);
+    }
+    body.innerHTML = `
+      <div style="text-align: center; padding: 20px;">
+        <h3 style="color: #c9a84c; margin-bottom: 10px; font-size: 20px;">🎉 Word Scramble Completed!</h3>
+        <p style="color: #e8dfc8; font-size: 16px; margin-bottom: 16px;">You scored <strong style="color: #4ade80;">${scrambleScore}</strong> points total!</p>
+        <button class="primary-btn" type="button" onclick="openStudyModal('games')" style="width: 100%; padding: 10px; margin-bottom: 8px; cursor: pointer;">Back to Game Center</button>
+        <button class="ghost-btn" type="button" onclick="startScrambleGame()" style="width: 100%; padding: 10px; cursor: pointer;">Play Again ↻</button>
+      </div>
+    `;
+    return;
+  }
+  const item = SCRAMBLE_POOL[currentScrambleIdx];
+  currentOriginalWord = item.word;
+  currentScrambledWord = scrambleWord(item.word);
+
+  body.innerHTML = `
+    <div style="font-size: 14px; color: #e8dfc8;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <button class="ghost-btn" type="button" onclick="openStudyModal('games')" style="padding: 4px 8px; font-size: 12px; cursor: pointer;">← Back to Games</button>
+        <span style="color: #7a9e7e; font-size: 12px;">Word ${currentScrambleIdx + 1} of ${SCRAMBLE_POOL.length}</span>
+      </div>
+      <p style="color: #c9a84c; font-size: 14px; margin-bottom: 6px;">Hint: ${item.hint}</p>
+      <div style="background: #0d1f0f; border: 2px dashed #325e37; border-radius: 8px; padding: 16px; text-align: center; font-size: 28px; font-weight: 800; letter-spacing: 4px; color: #4ade80; margin-bottom: 16px;">
+        ${currentScrambledWord}
+      </div>
+      <div style="margin-bottom: 12px;">
+        <input type="text" id="scramble-input" placeholder="Type your guess here..." style="width: 100%; padding: 12px; background: #0d1f0f; border: 1px solid #325e37; border-radius: 6px; color: #fff; font-size: 16px; text-transform: uppercase;" onkeypress="if(event.key === 'Enter') submitScrambleGuess()" />
+      </div>
+      <button class="primary-btn" type="button" onclick="submitScrambleGuess()" style="width: 100%; padding: 12px; margin-bottom: 8px; cursor: pointer;">Submit Answer</button>
+      <div id="scramble-result" style="font-weight: 700; text-align: center; margin-top: 10px;"></div>
+    </div>
+  `;
+}
+
+function submitScrambleGuess() {
+  const input = document.getElementById("scramble-input");
+  const resDiv = document.getElementById("scramble-result");
+  if (!input) return;
+  const userGuess = input.value.trim().toUpperCase();
+  if (!userGuess) return;
+
+  if (userGuess === currentOriginalWord) {
+    scrambleScore += 150;
     resDiv.style.color = "#4ade80";
-    resDiv.textContent = "✓ Correct! +100 points added to your score.";
-    saveGameScore("Bible Trivia", 100);
+    resDiv.textContent = "✓ Correct! +150 points.";
+    setTimeout(() => {
+      currentScrambleIdx++;
+      loadScrambleQuestion();
+    }, 1200);
   } else {
     resDiv.style.color = "#f87171";
-    resDiv.textContent = "✗ Incorrect!";
+    resDiv.textContent = `✗ Incorrect! The correct word was ${currentOriginalWord}.`;
+    setTimeout(() => {
+      currentScrambleIdx++;
+      loadScrambleQuestion();
+    }, 1500);
   }
 }
 
-async function loadRealLeaderboard() {
+// --- GUESS THE VERSE GAME ---
+const VERSE_POOL = [
+  { text: "For God so loved the world that he gave his one and only Son...", reference: "John 3:16", options: ["John 3:16", "Romans 8:28", "Genesis 1:1", "Psalm 23:1"], correct: 0 },
+  { text: "The Lord is my shepherd, I lack nothing.", reference: "Psalm 23:1", options: ["Proverbs 3:5", "Psalm 23:1", "Isaiah 40:31", "Philippians 4:13"], correct: 1 },
+  { text: "Trust in the Lord with all your heart and lean not on your own understanding.", reference: "Proverbs 3:5", options: ["Jeremiah 29:11", "Psalm 46:10", "Proverbs 3:5", "Matthew 6:33"], correct: 2 },
+  { text: "I can do all things through Christ who strengthens me.", reference: "Philippians 4:13", options: ["Romans 12:2", "Philippians 4:13", "Joshua 1:9", "Galatians 5:22"], correct: 1 },
+  { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you...", reference: "Jeremiah 29:11", options: ["Jeremiah 29:11", "Psalm 119:105", "Romans 8:31", "John 14:6"], correct: 0 }
+];
+let currentVerseIdx = 0;
+let verseScore = 0;
+let verseScoreSaved = false;
+
+function startVerseGame() {
+  currentVerseIdx = 0;
+  verseScore = 0;
+  verseScoreSaved = false;
+  loadVerseQuestion();
+}
+
+function loadVerseQuestion() {
+  const body = document.getElementById("study-games-body");
+  if (currentVerseIdx >= VERSE_POOL.length) {
+    if (!verseScoreSaved) {
+      verseScoreSaved = true;
+      saveGameScore("Guess the Verse", verseScore);
+    }
+    body.innerHTML = `
+      <div style="text-align: center; padding: 20px;">
+        <h3 style="color: #c9a84c; margin-bottom: 10px; font-size: 20px;">🎉 Guess the Verse Completed!</h3>
+        <p style="color: #e8dfc8; font-size: 16px; margin-bottom: 16px;">You scored <strong style="color: #4ade80;">${verseScore}</strong> points total!</p>
+        <button class="primary-btn" type="button" onclick="openStudyModal('games')" style="width: 100%; padding: 10px; margin-bottom: 8px; cursor: pointer;">Back to Game Center</button>
+        <button class="ghost-btn" type="button" onclick="startVerseGame()" style="width: 100%; padding: 10px; cursor: pointer;">Play Again ↻</button>
+      </div>
+    `;
+    return;
+  }
+  const item = VERSE_POOL[currentVerseIdx];
+
+  body.innerHTML = `
+    <div style="font-size: 14px; color: #e8dfc8;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <button class="ghost-btn" type="button" onclick="openStudyModal('games')" style="padding: 4px 8px; font-size: 12px; cursor: pointer;">← Back to Games</button>
+        <span style="color: #7a9e7e; font-size: 12px;">Verse ${currentVerseIdx + 1} of ${VERSE_POOL.length}</span>
+      </div>
+      <p style="color: #7a9e7e; font-size: 12px; margin-bottom: 6px;">Which scripture reference matches this verse?</p>
+      <div style="background: #0d1f0f; border: 1px solid #325e37; border-radius: 8px; padding: 16px; font-style: italic; font-size: 15px; color: #e8dfc8; margin-bottom: 16px; line-height: 1.5;">
+        "${item.text}"
+      </div>
+      <div id="verse-options" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
+        ${item.options.map(function(opt, idx) {
+          return `<button class="ghost-btn verse-opt-btn" type="button" onclick="answerVerse(${idx === item.correct}, this)" style="text-align: left; padding: 10px; cursor: pointer;">${String.fromCharCode(65 + idx)}) ${opt}</button>`;
+        }).join("")}
+      </div>
+      <div id="verse-result" style="font-weight: 700; text-align: center; margin-bottom: 10px;"></div>
+    </div>
+  `;
+}
+
+function answerVerse(isCorrect, btnElement) {
+  const resDiv = document.getElementById("verse-result");
+  const allBtns = document.querySelectorAll(".verse-opt-btn");
+  allBtns.forEach(function(b) { b.disabled = true; });
+
+  if (isCorrect) {
+    verseScore += 120;
+    if (resDiv) {
+      resDiv.style.color = "#4ade80";
+      resDiv.textContent = "✓ Correct! +120 points.";
+    }
+  } else {
+    if (resDiv) {
+      resDiv.style.color = "#f87171";
+      resDiv.textContent = "✗ Incorrect!";
+    }
+  }
+
+  setTimeout(function() {
+    currentVerseIdx++;
+    loadVerseQuestion();
+  }, 1200);
+}
+
+const OFFLINE_QUEUE_KEY = "bible_offline_outbox_v1";
+let offlineIndicatorTimer = null;
+
+function offlineScope() {
+  const token = localStorage.getItem("bible_token");
+  if (!token) return "guest";
+  try {
+    const payload = token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+    const data = JSON.parse(atob(payload));
+    return String(data.sub || data.id || data.user_id || data.username || token.slice(-12)).replace(/[^a-z0-9_-]/gi, "_");
+  } catch (e) {
+    return token.slice(-12).replace(/[^a-z0-9_-]/gi, "_");
+  }
+}
+
+function offlineStorageKey(prefix) {
+  return prefix + "_" + offlineScope();
+}
+
+function readOfflineJson(key, fallback) {
+  try {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function writeOfflineJson(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { console.warn("Offline storage unavailable", e); }
+}
+
+function getOfflineQueue() {
+  return readOfflineJson(OFFLINE_QUEUE_KEY, []);
+}
+
+function saveOfflineQueue(queue) {
+  writeOfflineJson(OFFLINE_QUEUE_KEY, queue);
+}
+
+function queueOfflineMutation(type, payload) {
+  const queue = getOfflineQueue();
+  queue.push({ id: "offline-" + Date.now() + "-" + Math.random().toString(36).slice(2), scope: offlineScope(), type: type, payload: payload, created_at: new Date().toISOString() });
+  saveOfflineQueue(queue);
+  setOfflineStatus("Saved on this device. It will sync automatically when you reconnect.", "offline", true);
+}
+
+function setOfflineStatus(message, kind, persist) {
+  const indicator = document.getElementById("offline-indicator");
+  if (!indicator) return;
+  clearTimeout(offlineIndicatorTimer);
+  indicator.textContent = message;
+  indicator.className = "is-visible " + (kind ? "is-" + kind : "");
+  if (!persist) {
+    offlineIndicatorTimer = setTimeout(function() { indicator.className = ""; }, 4200);
+  }
+}
+
+function updateOfflineIndicator(showRecovery) {
+  if (!navigator.onLine) {
+    setOfflineStatus("Offline mode: cached Scripture, notes, and games remain available. AI answers and online account updates need a connection.", "offline", true);
+  } else if (showRecovery) {
+    setOfflineStatus("Back online. Synchronizing your offline study activity…", "online", true);
+    setTimeout(function() { flushOfflineQueue(); }, 250);
+  }
+}
+
+async function flushOfflineQueue() {
+  const token = localStorage.getItem("bible_token");
+  if (!navigator.onLine || !token) return;
+  const scope = offlineScope();
+  let queue = getOfflineQueue();
+  const mine = queue.filter(function(item) { return item.scope === scope; });
+  if (!mine.length) return;
+  setOfflineStatus("Synchronizing offline study activity…", "online", true);
+  for (const item of mine) {
+    try {
+      let endpoint = "";
+      let options = { headers: { "Authorization": "Bearer " + token } };
+      if (item.type === "note-create") {
+        endpoint = "/api/notes";
+        options.method = "POST";
+        options.headers["Content-Type"] = "application/json";
+        options.body = JSON.stringify(item.payload);
+      } else if (item.type === "note-update") {
+        endpoint = "/api/notes/" + item.payload.id;
+        options.method = "PUT";
+        options.headers["Content-Type"] = "application/json";
+        options.body = JSON.stringify(item.payload.data);
+      } else if (item.type === "note-delete") {
+        endpoint = "/api/notes/" + item.payload.id;
+        options.method = "DELETE";
+      } else if (item.type === "game-score") {
+        endpoint = "/api/games/score";
+        options.method = "POST";
+        options.headers["Content-Type"] = "application/json";
+        options.body = JSON.stringify(item.payload);
+      } else if (item.type === "study-progress") {
+        endpoint = "/api/study/progress";
+        options.method = "POST";
+        options.headers["Content-Type"] = "application/json";
+        options.body = JSON.stringify(item.payload);
+      }
+      if (!endpoint) continue;
+      const res = await fetch(endpoint, options);
+      if (!res.ok && !(item.type === "note-delete" && res.status === 404)) throw new Error("sync HTTP " + res.status);
+      const result = res.status === 204 ? null : await res.json().catch(function() { return null; });
+      if (item.type === "note-create" && result && result.id) {
+        const notes = readOfflineJson(offlineStorageKey("bible_notes"), []);
+        const index = notes.findIndex(function(note) { return note.id === item.payload.temp_id; });
+        if (index >= 0) { notes[index] = result; writeOfflineJson(offlineStorageKey("bible_notes"), notes); }
+      }
+      queue = queue.filter(function(entry) { return entry.id !== item.id; });
+      saveOfflineQueue(queue);
+    } catch (e) {
+      console.warn("Offline sync paused", e);
+      break;
+    }
+  }
+  if (queue.some(function(item) { return item.scope === scope; })) {
+    setOfflineStatus("Some offline changes are waiting for a stable connection.", "offline", true);
+  } else {
+    setOfflineStatus("Offline changes synchronized successfully.", "online", false);
+  }
+}
+
+window.addEventListener("offline", function() { updateOfflineIndicator(false); });
+window.addEventListener("online", function() { updateOfflineIndicator(true); });
+
+let globalLeaderboardData = null;
+
+function buildOfflineLeaderboard() {
+  const scores = readOfflineJson(offlineStorageKey("bible_scores"), []);
+  const username = localStorage.getItem("bible_username") || "Offline Scholar";
+  const modes = [
+    { key: "trivia", name: "Bible Trivia", label: "trivia" },
+    { key: "scramble", name: "Word Scramble", label: "scramble" },
+    { key: "verse", name: "Guess the Verse", label: "verse" }
+  ];
+  const byMode = {};
+  modes.forEach(function(mode) {
+    const best = scores.filter(function(item) { return item.game_name === mode.name; }).reduce(function(max, item) { return Math.max(max, Number(item.score) || 0); }, 0);
+    byMode[mode.key] = best ? [{ username: username, score: best }] : [];
+  });
+  const total = modes.reduce(function(sum, mode) { return sum + (byMode[mode.key][0] ? byMode[mode.key][0].score : 0); }, 0);
+  return { overall: total ? [{ username: username, total_score: total, games_played: modes.filter(function(mode) { return byMode[mode.key].length; }).length }] : [], trivia: byMode.trivia, scramble: byMode.scramble, verse: byMode.verse };
+}
+
+async function loadRealLeaderboard(tab = 'overall') {
   const listDiv = document.getElementById("leaderboard-list");
   try {
-    const res = await fetch("/api/games/leaderboard");
-    if (!res.ok) throw new Error("Failed to load");
-    const data = await res.json();
-    if (data.length === 0) {
-      listDiv.innerHTML = '<p style="color: #7a9e7e; text-align: center; padding: 10px;">No scores recorded yet. Be the first to play!</p>';
-      return;
+    if (navigator.onLine) {
+      const res = await fetch("/api/games/leaderboard");
+      if (!res.ok) throw new Error("Failed to load");
+      globalLeaderboardData = await res.json();
+    } else {
+      globalLeaderboardData = buildOfflineLeaderboard();
+      setOfflineStatus("Offline mode: showing scores saved on this device.", "offline", false);
     }
-    listDiv.innerHTML = `
-      <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #1e3d20; padding-bottom: 6px; font-weight: 700; color: #c9a84c;">
-        <span>Scholar</span><span>Score</span>
-      </div>
-      ` + data.map(function(row, idx) {
-        return `
-          <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed rgba(255,255,255,0.05);">
-            <span>${idx + 1}. ${escapeHtml(row.username)}</span><span style="color: #c9a84c;">${row.score} pts</span>
-          </div>
-        `;
-      }).join("");
+    renderLeaderboardTab(tab);
   } catch (err) {
-    listDiv.innerHTML = '<p style="color: #e05c4a; text-align: center;">Error loading leaderboard.</p>';
+    globalLeaderboardData = buildOfflineLeaderboard();
+    renderLeaderboardTab(tab);
+    setOfflineStatus("Could not reach the global leaderboard. Showing local scores.", "offline", false);
+    if (listDiv && !globalLeaderboardData.overall.length && !globalLeaderboardData.trivia.length && !globalLeaderboardData.scramble.length && !globalLeaderboardData.verse.length) listDiv.innerHTML = '<p style="color: #7a9e7e; text-align: center; padding: 20px;">No local scores yet. Play a game to start your offline leaderboard.</p>';
   }
+}
+
+function switchLeaderboardTab(tab) {
+  ['overall', 'trivia', 'scramble', 'verse'].forEach(function(t) {
+    const btn = document.getElementById("lb-tab-" + t);
+    if (!btn) return;
+    if (t === tab) {
+      btn.className = "primary-btn";
+      btn.style.background = "#c9a84c";
+      btn.style.color = "#0a1a0c";
+    } else {
+      btn.className = "ghost-btn";
+      btn.style.background = "transparent";
+      btn.style.color = "#e8dfc8";
+    }
+  });
+  renderLeaderboardTab(tab);
+}
+
+function renderLeaderboardTab(tab) {
+  const listDiv = document.getElementById("leaderboard-list");
+  if (!listDiv || !globalLeaderboardData) return;
+  const rows = globalLeaderboardData[tab] || [];
+  
+  if (rows.length === 0) {
+    listDiv.innerHTML = '<p style="color: #7a9e7e; text-align: center; padding: 20px;">No scores recorded in this category yet. Be the first!</p>';
+    return;
+  }
+
+  const headerLabel = tab === 'overall' ? 'Total Score' : 'Score';
+  listDiv.innerHTML = `
+    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #1e3d20; padding-bottom: 6px; font-weight: 700; color: #c9a84c;">
+      <span>Scholar</span><span>${headerLabel}</span>
+    </div>
+    ` + rows.map(function(row, idx) {
+      const scoreVal = tab === 'overall' ? row.total_score : row.score;
+      const medal = idx === 0 ? '👑 ' : idx === 1 ? '🥈 ' : idx === 2 ? '🥉 ' : '';
+      return `
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed rgba(255,255,255,0.05); align-items: center;">
+          <span style="color: ${idx < 3 ? '#c9a84c' : '#e8dfc8'}; font-weight: ${idx < 3 ? '700' : '400'};">${medal}${idx + 1}. ${escapeHtml(row.username)}</span>
+          <span style="color: #4ade80; font-weight: 700;">${scoreVal} pts</span>
+        </div>
+      `;
+    }).join("");
 }
 
 // --- WEEKLY LESSON SCHEDULE SYSTEM ---
@@ -1967,44 +2653,58 @@ function getCurrentWeekNumber() {
 async function loadWeeklyLesson() {
   const weekNum = getCurrentWeekNumber();
   const lesson = WEEKLY_LESSONS[weekNum - 1] || WEEKLY_LESSONS[0];
-  
   document.getElementById("weekly-lesson-week-badge").textContent = "Week " + weekNum + " of 4 (Monthly Schedule)";
   document.getElementById("weekly-lesson-title").textContent = lesson.title;
   document.getElementById("weekly-lesson-text").textContent = lesson.text;
 
+  const cachedProgress = readOfflineJson(offlineStorageKey("bible_study_progress"), []);
+  const cachedCurrent = cachedProgress.find(function(p) { return Number(p.week_number) === weekNum; });
+  if (cachedCurrent && cachedCurrent.completed) renderCompletedLessonState();
   const token = localStorage.getItem("bible_token");
-  if (!token) return;
-
+  if (!token || !navigator.onLine) {
+    if (!navigator.onLine) setOfflineStatus("Offline mode: weekly lesson progress is saved locally.", "offline", false);
+    return;
+  }
   try {
-    const res = await fetch("/api/study/progress", {
-      headers: { "Authorization": "Bearer " + token }
-    });
-    if (res.ok) {
-      const progress = await res.json();
-      const currentWeekProg = progress.find(function(p) { return p.week_number === weekNum; });
-      if (currentWeekProg && currentWeekProg.completed) {
-        renderCompletedLessonState();
-      }
-    }
+    const res = await fetch("/api/study/progress", { headers: { "Authorization": "Bearer " + token } });
+    if (!res.ok) throw new Error("Progress unavailable");
+    const progress = await res.json();
+    writeOfflineJson(offlineStorageKey("bible_study_progress"), progress);
+    const currentWeekProg = progress.find(function(p) { return Number(p.week_number) === weekNum; });
+    if (currentWeekProg && currentWeekProg.completed) renderCompletedLessonState();
   } catch (e) {
-    console.error("Error loading progress", e);
+    setOfflineStatus("Could not reach the server. Using local lesson progress.", "offline", false);
   }
 }
 
 async function completeWeeklyLesson() {
   const weekNum = getCurrentWeekNumber();
   const token = localStorage.getItem("bible_token");
-  
+  if (!token) { alert("Please sign in to track lesson progress."); return; }
+  const progress = readOfflineJson(offlineStorageKey("bible_study_progress"), []);
+  const nextProgress = progress.filter(function(p) { return Number(p.week_number) !== weekNum; });
+  nextProgress.push({ week_number: weekNum, completed: true, offline_pending: !navigator.onLine });
+  writeOfflineJson(offlineStorageKey("bible_study_progress"), nextProgress);
+  renderCompletedLessonState();
+  if (!navigator.onLine) {
+    queueOfflineMutation("study-progress", { week_number: weekNum, completed: true });
+    alert("🎉 Lesson completed and saved on this device. It will sync when you reconnect.");
+    return;
+  }
   try {
-    await fetch("/api/study/progress", {
+    const res = await fetch("/api/study/progress", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
       body: JSON.stringify({ week_number: weekNum, completed: true })
     });
-    renderCompletedLessonState();
+    if (!res.ok) throw new Error("Progress save failed");
+    const saved = await res.json();
+    const synced = readOfflineJson(offlineStorageKey("bible_study_progress"), []).map(function(p) { return Number(p.week_number) === weekNum ? saved : p; });
+    writeOfflineJson(offlineStorageKey("bible_study_progress"), synced);
     alert("🎉 Congratulations! You have successfully completed this week's lesson. Would you like to continue exploring deeper monthly teachings in the Monthly Bible Study hub?");
   } catch (err) {
-    alert("Error saving progress");
+    queueOfflineMutation("study-progress", { week_number: weekNum, completed: true });
+    alert("🎉 Lesson completed locally. The progress will sync automatically when your connection returns.");
   }
 }
 
@@ -2020,63 +2720,88 @@ function renderCompletedLessonState() {
 async function saveGameScore(gameName, score) {
   const token = localStorage.getItem("bible_token");
   if (!token) return;
+  const scoreRecord = { game_name: gameName, score: Number(score) || 0, saved_at: new Date().toISOString() };
+  const scores = readOfflineJson(offlineStorageKey("bible_scores"), []);
+  scores.push(scoreRecord);
+  writeOfflineJson(offlineStorageKey("bible_scores"), scores.slice(-100));
+  if (!navigator.onLine) {
+    queueOfflineMutation("game-score", { game_name: gameName, score: scoreRecord.score });
+    return;
+  }
   try {
-    await fetch("/api/games/score", {
+    const res = await fetch("/api/games/score", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
-      body: JSON.stringify({ game_name: gameName, score: score })
+      body: JSON.stringify({ game_name: gameName, score: scoreRecord.score })
     });
+    if (!res.ok) throw new Error("Score save failed");
   } catch (e) {
-    console.error("Score save error", e);
+    queueOfflineMutation("game-score", { game_name: gameName, score: scoreRecord.score });
   }
 }
 
 // --- BIBLE NOTES & AI GUIDE LOGIC ---
+function renderNotes(notes) {
+  const container = document.getElementById("notes-list-container");
+  if (!container) return;
+  notes = Array.isArray(notes) ? notes : [];
+  if (notes.length === 0) {
+    container.innerHTML = '<p style="color: #7a9e7e; font-size: 14px; text-align: center; padding: 20px;">No notes yet. Create your first note above!</p>';
+    return;
+  }
+  container.innerHTML = notes.map(function(n) {
+    const noteIdText = String(n.id);
+    const noteId = /^[0-9]+$/.test(noteIdText) ? noteIdText : "'" + noteIdText.replace(/'/g, "\\'") + "'";
+    const titleForJs = escapeHtml(n.title || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
+    const contentForJs = escapeHtml(n.content || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
+    const pending = n.offline_pending ? '<div class="offline-card">Saved on this device — will sync when you reconnect.</div>' : '';
+    return `
+      <div class="card" style="position: relative; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+          <h3 style="color: #c9a84c; font-size: 18px;">${escapeHtml(n.title || "Untitled")}</h3>
+          <div style="position: relative;">
+            <button type="button" onclick="toggleNoteMenu(${noteId})" style="background: none; border: none; color: #d4b896; font-size: 18px; cursor: pointer; padding: 0 6px;" title="Options">⋮</button>
+            <div id="note-menu-${escapeHtml(String(n.id))}" style="display: none; position: absolute; right: 0; top: 24px; background: #0d1f0f; border: 1px solid #1e3d20; border-radius: 8px; z-index: 10; width: 130px; box-shadow: 0 4px 16px rgba(0,0,0,0.6);">
+              <button type="button" onclick="requestAiGuide(${noteId}, '${titleForJs}', '${contentForJs}')" style="background: none; border: none; color: #c9a84c; width: 100%; text-align: left; padding: 8px 12px; font-size: 12px; cursor: pointer; border-bottom: 1px solid #1e3d20;">🤖 AI Guide</button>
+              <button type="button" onclick="renameNote(${noteId})" style="background: none; border: none; color: #e8dfc8; width: 100%; text-align: left; padding: 8px 12px; font-size: 12px; cursor: pointer; border-bottom: 1px solid #1e3d20;">✏️ Rename</button>
+              <button type="button" onclick="deleteNote(${noteId})" style="background: none; border: none; color: #e05c4a; width: 100%; text-align: left; padding: 8px 12px; font-size: 12px; cursor: pointer;">🗑️ Delete</button>
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 14px; line-height: 1.6; color: #e8dfc8; margin-bottom: 12px; white-space: pre-wrap;">${escapeHtml(n.content || "")}</p>
+        ${pending}
+        <div id="ai-guide-container-${escapeHtml(String(n.id))}">
+          ${n.ai_guide ? `
+            <div style="background: rgba(201,168,76,0.08); border-left: 3px solid #c9a84c; padding: 14px; border-radius: 8px; margin-top: 14px;">
+              <div style="font-size: 11px; font-weight: 700; color: #c9a84c; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">✦ AI Theological Guide</div>
+              <div style="font-size: 13px; color: #d4b896; line-height: 1.6;">${renderMarkdown(n.ai_guide)}</div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
 async function loadNotes() {
   const token = localStorage.getItem("bible_token");
   const container = document.getElementById("notes-list-container");
   if (!token || !container) return;
-  
+  const cachedNotes = readOfflineJson(offlineStorageKey("bible_notes"), []);
+  renderNotes(cachedNotes);
+  if (!navigator.onLine) {
+    setOfflineStatus("Offline mode: showing notes saved on this device.", "offline", false);
+    return;
+  }
   try {
-    const res = await fetch("/api/notes", {
-      headers: { "Authorization": "Bearer " + token }
-    });
+    const res = await fetch("/api/notes", { headers: { "Authorization": "Bearer " + token } });
     if (!res.ok) throw new Error("Failed to load notes");
     const notes = await res.json();
-    
-    if (notes.length === 0) {
-      container.innerHTML = '<p style="color: #7a9e7e; font-size: 14px; text-align: center; padding: 20px;">No notes yet. Create your first note above!</p>';
-      return;
-    }
-    
-    container.innerHTML = notes.map(function(n) {
-      return `
-        <div class="card" style="position: relative; margin-bottom: 16px;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-            <h3 style="color: #c9a84c; font-size: 18px;">${escapeHtml(n.title)}</h3>
-            <div style="position: relative;">
-              <button type="button" onclick="toggleNoteMenu(${n.id})" style="background: none; border: none; color: #d4b896; font-size: 18px; cursor: pointer; padding: 0 6px;" title="Options">⋮</button>
-              <div id="note-menu-${n.id}" style="display: none; position: absolute; right: 0; top: 24px; background: #0d1f0f; border: 1px solid #1e3d20; border-radius: 8px; z-index: 10; width: 130px; box-shadow: 0 4px 16px rgba(0,0,0,0.6);">
-                <button type="button" onclick="requestAiGuide(${n.id}, '${escapeHtml(n.title).replace(/'/g, "\\'")}', '${escapeHtml(n.content).replace(/'/g, "\\'")}')" style="background: none; border: none; color: #c9a84c; width: 100%; text-align: left; padding: 8px 12px; font-size: 12px; cursor: pointer; border-bottom: 1px solid #1e3d20;">🤖 AI Guide</button>
-                <button type="button" onclick="renameNote(${n.id})" style="background: none; border: none; color: #e8dfc8; width: 100%; text-align: left; padding: 8px 12px; font-size: 12px; cursor: pointer; border-bottom: 1px solid #1e3d20;">✏️ Rename</button>
-                <button type="button" onclick="deleteNote(${n.id})" style="background: none; border: none; color: #e05c4a; width: 100%; text-align: left; padding: 8px 12px; font-size: 12px; cursor: pointer;">🗑️ Delete</button>
-              </div>
-            </div>
-          </div>
-          <p style="font-size: 14px; line-height: 1.6; color: #e8dfc8; margin-bottom: 12px; white-space: pre-wrap;">${escapeHtml(n.content)}</p>
-          <div id="ai-guide-container-${n.id}">
-            ${n.ai_guide ? `
-              <div style="background: rgba(201,168,76,0.08); border-left: 3px solid #c9a84c; padding: 14px; border-radius: 8px; margin-top: 14px;">
-                <div style="font-size: 11px; font-weight: 700; color: #c9a84c; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">✦ AI Theological Guide</div>
-                <div style="font-size: 13px; color: #d4b896; line-height: 1.6;">${renderMarkdown(n.ai_guide)}</div>
-              </div>
-            ` : ''}
-          </div>
-        </div>
-      `;
-    }).join("");
+    writeOfflineJson(offlineStorageKey("bible_notes"), notes);
+    renderNotes(notes);
   } catch (err) {
-    container.innerHTML = '<p style="color: #e05c4a; font-size: 14px;">Error loading notes.</p>';
+    renderNotes(cachedNotes);
+    setOfflineStatus("Could not reach the server. Showing your locally saved notes.", "offline", false);
   }
 }
 
@@ -2095,32 +2820,59 @@ async function createNote() {
     return;
   }
   const token = localStorage.getItem("bible_token");
+  if (!token) { alert("Please sign in before saving notes."); return; }
+  const tempId = "local-" + Date.now();
+  const localNote = { id: tempId, title: title, content: content, ai_guide: "", created_at: new Date().toISOString(), offline_pending: true };
+  const notes = readOfflineJson(offlineStorageKey("bible_notes"), []);
+  notes.unshift(localNote);
+  writeOfflineJson(offlineStorageKey("bible_notes"), notes);
+  document.getElementById("note-title-input").value = "";
+  document.getElementById("note-content-input").value = "";
+  renderNotes(notes);
+  if (!navigator.onLine) {
+    queueOfflineMutation("note-create", { temp_id: tempId, title: title, content: content, ai_guide: "" });
+    return;
+  }
   try {
     const res = await fetch("/api/notes", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
-      body: JSON.stringify({ title, content })
+      body: JSON.stringify({ title: title, content: content })
     });
     if (!res.ok) throw new Error("Failed to create note");
-    document.getElementById("note-title-input").value = "";
-    document.getElementById("note-content-input").value = "";
-    loadNotes();
+    const saved = await res.json();
+    const updated = readOfflineJson(offlineStorageKey("bible_notes"), []).map(function(note) { return note.id === tempId ? saved : note; });
+    writeOfflineJson(offlineStorageKey("bible_notes"), updated);
+    renderNotes(updated);
   } catch (err) {
-    alert("Error creating note: " + err.message);
+    queueOfflineMutation("note-create", { temp_id: tempId, title: title, content: content, ai_guide: "" });
   }
 }
 
 async function deleteNote(id) {
   if (!confirm("Are you sure you want to delete this note?")) return;
   const token = localStorage.getItem("bible_token");
+  const notes = readOfflineJson(offlineStorageKey("bible_notes"), []).filter(function(note) { return String(note.id) !== String(id); });
+  writeOfflineJson(offlineStorageKey("bible_notes"), notes);
+  renderNotes(notes);
+  let queue = getOfflineQueue();
+  const hadPendingCreate = queue.some(function(item) { return item.scope === offlineScope() && item.type === "note-create" && String(item.payload.temp_id) === String(id); });
+  queue = queue.filter(function(item) { return !(item.scope === offlineScope() && item.type === "note-create" && String(item.payload.temp_id) === String(id)); });
+  if (hadPendingCreate || String(id).indexOf("local-") === 0) {
+    saveOfflineQueue(queue);
+    return;
+  }
+  if (!navigator.onLine) {
+    queue.push({ id: "offline-" + Date.now(), scope: offlineScope(), type: "note-delete", payload: { id: id }, created_at: new Date().toISOString() });
+    saveOfflineQueue(queue);
+    setOfflineStatus("Note deleted on this device. The server copy will be removed when you reconnect.", "offline", true);
+    return;
+  }
   try {
-    await fetch("/api/notes/" + id, {
-      method: "DELETE",
-      headers: { "Authorization": "Bearer " + token }
-    });
-    loadNotes();
+    const res = await fetch("/api/notes/" + id, { method: "DELETE", headers: { "Authorization": "Bearer " + token } });
+    if (!res.ok) throw new Error("Delete failed");
   } catch (err) {
-    alert("Error deleting note");
+    queueOfflineMutation("note-delete", { id: id });
   }
 }
 
@@ -2128,21 +2880,47 @@ async function renameNote(id) {
   const newTitle = prompt("Enter new title for note:");
   if (!newTitle) return;
   const token = localStorage.getItem("bible_token");
+  const notes = readOfflineJson(offlineStorageKey("bible_notes"), []);
+  const updatedNotes = notes.map(function(note) {
+    if (String(note.id) === String(id)) return Object.assign({}, note, { title: newTitle, offline_pending: !navigator.onLine || note.offline_pending });
+    return note;
+  });
+  writeOfflineJson(offlineStorageKey("bible_notes"), updatedNotes);
+  renderNotes(updatedNotes);
+  let queue = getOfflineQueue();
+  const pendingCreate = queue.find(function(item) { return item.scope === offlineScope() && item.type === "note-create" && String(item.payload.temp_id) === String(id); });
+  if (pendingCreate) {
+    pendingCreate.payload.title = newTitle;
+    saveOfflineQueue(queue);
+    return;
+  }
+  if (!navigator.onLine) {
+    queueOfflineMutation("note-update", { id: id, data: { title: newTitle } });
+    return;
+  }
   try {
-    await fetch("/api/notes/" + id, {
+    const res = await fetch("/api/notes/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
       body: JSON.stringify({ title: newTitle })
     });
-    loadNotes();
+    if (!res.ok) throw new Error("Rename failed");
+    const saved = await res.json();
+    const latest = readOfflineJson(offlineStorageKey("bible_notes"), []).map(function(note) { return String(note.id) === String(id) ? saved : note; });
+    writeOfflineJson(offlineStorageKey("bible_notes"), latest);
+    renderNotes(latest);
   } catch (err) {
-    alert("Error renaming note");
+    queueOfflineMutation("note-update", { id: id, data: { title: newTitle } });
   }
 }
 
 async function requestAiGuide(id, title, content) {
   const token = localStorage.getItem("bible_token");
   const promptText = "Provide a concise theological and pastoral Bible study guide for this personal note titled '" + title + "': " + content;
+  if (!navigator.onLine) {
+    alert("AI guides need an internet connection. Your note is available offline and you can generate the guide after reconnecting.");
+    return;
+  }
   
   const guideContainer = document.getElementById("ai-guide-container-" + id);
   if (guideContainer) {
@@ -2212,7 +2990,9 @@ function renderMarkdown(md) {
 }
 
 function escapeHtml(str) {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  return String(str).replace(/[&<>"']/g, function(ch) {
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch];
+  });
 }
 
 // Hook into switchPage for notes tab
@@ -2223,20 +3003,35 @@ switchPage = function(page) {
 };
 
 loadSavedTheme();
+loadSavedFonts();
 loadVOTD();
 loadDailyDevotional();
 loadWeeklyLesson();
 updateHomeStats();
 checkAuth();
 
-// Register Service Worker for PWA / App Installation
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').then(function(registration) {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
+// Register Service Worker for PWA / offline support
+async function registerOfflineSupport() {
+  updateOfflineIndicator(false);
+  if (navigator.serviceWorker) {
+    try {
+      const registration = await navigator.serviceWorker.register("/sw.js");
+      await registration.update();
+      if (registration.waiting) registration.waiting.postMessage({ type: "SKIP_WAITING" });
+      registration.addEventListener("updatefound", function() {
+        const worker = registration.installing;
+        if (!worker) return;
+        worker.addEventListener("statechange", function() {
+          if (worker.state === "installed" && navigator.serviceWorker.controller) worker.postMessage({ type: "SKIP_WAITING" });
+        });
+      });
+      console.log("Offline Service Worker ready:", registration.scope);
+    } catch (err) {
+      console.warn("Offline Service Worker registration failed:", err);
+    }
+  }
+  flushOfflineQueue();
 }
+if (document.readyState === "loading") window.addEventListener("load", registerOfflineSupport);
+else registerOfflineSupport();
 </script></body></html>

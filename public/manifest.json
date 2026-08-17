@@ -1,11 +1,19 @@
 {
   "name": "Bible AI Scholar",
   "short_name": "Bible AI",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
   "background_color": "#0a1a0c",
   "theme_color": "#0a1a0c",
-  "description": "An immersive Bible reader, AI theological assistant, and gamified study platform.",
+  "lang": "en",
+  "dir": "ltr",
+  "description": "An immersive Bible reader, AI theological assistant, and gamified study platform with offline reading, notes, and games.",
+  "categories": ["books", "education", "lifestyle"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icon-192.png",
