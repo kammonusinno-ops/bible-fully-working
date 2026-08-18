@@ -1,0 +1,33 @@
+/* Desktop-first application shell layered over the original static Bible app. */
+@media (min-width: 980px) {
+  body { min-height: 100vh; }
+  #top-nav { position: fixed !important; inset: 0 auto 0 0; z-index: 40; display: flex !important; width: 252px; height: 100vh !important; min-height: 100vh !important; padding: 26px 17px !important; flex-direction: column !important; align-items: stretch !important; gap: 30px; overflow-y: auto; border-right: 1px solid var(--border-color) !important; }
+  #nav-logo { padding: 10px 12px; font-size: 22px !important; }
+  #nav-tabs { width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 5px; }
+  .nav-tab { width: 100%; justify-content: flex-start; padding: 11px 12px !important; border-radius: 10px; text-align: left; }
+  #nav-streak-badge { margin: 18px 7px 0 !important; justify-content: center; }
+  #app { min-height: 100vh; margin-left: 252px; }
+  .page { min-height: 100vh; height: auto; }
+  .page-inner { max-width: 1420px !important; padding: 48px 58px !important; }
+  #page-qa .page-inner { max-width: 1120px !important; }
+  #page-settings .page-inner { max-width: 1040px !important; }
+  #page-settings .page-title { font-size: 36px; }
+  #page-settings .page-hint { max-width: 680px; }
+  #page-settings .qa-settings-card { display: block !important; position: static !important; width: 100% !important; max-height: none !important; margin: 24px 0 0 !important; padding: 26px !important; }
+  #page-settings .qa-settings-heading { margin-bottom: 20px; }
+  #page-settings .qa-settings-section { padding: 18px 0; }
+  #page-settings .qa-key-input, #page-settings .qa-model-select { min-height: 46px; }
+  #page-settings .qa-action-row { margin-top: 14px; }
+  #page-settings .qa-close-btn { display: none; }
+  #page-qa .qa-settings-card { display: none !important; }
+  #page-notes .page-inner, #page-bookmarks .page-inner { max-width: 1180px !important; }
+}
+
+@media (max-width: 979px) {
+  #page-settings .qa-settings-card { display: block !important; position: static !important; width: auto !important; max-height: none !important; margin: 18px 0 !important; }
+  #page-qa .qa-settings-card { display: none !important; }
+}
+
+#page-settings .settings-intro { padding: 20px; border: 1px solid var(--border-color); border-radius: 14px; background: color-mix(in srgb, var(--accent-gold) 8%, var(--card-bg)); }
+#page-settings .settings-intro strong { display: block; margin-bottom: 6px; color: var(--accent-gold); font-family: var(--font-bible); font-size: 20px; }
+#page-settings .settings-intro p { margin: 0; color: var(--text-muted); line-height: 1.6; }

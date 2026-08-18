@@ -7,7 +7,8 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0a1a0c">
 		<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"> 
-		  <link rel="stylesheet" href="styles.css"> 
+		  <link rel="stylesheet" href="styles.css">
+          <link rel="stylesheet" href="desktop-enhancements.css">
 	 <style type="text/css" id="dcoder_stylesheet">:root {
 	  --bg-grad-1: #061208;
 	  --bg-grad-2: #0b1f0d;
@@ -306,17 +307,6 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
   .votd-text { font-size: 18px; }
   .verse-text { font-size: 17px; }
   #chapters-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
-  #book-list, #bm-list, #notes-list-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; align-items: start; }
-  #book-list .category-label { grid-column: 1 / -1; }
-  .book-card, .bm-card, #notes-list-container .card { margin-bottom: 0; }
-  #progress-stats { flex-wrap: nowrap; }
-}
-
-/* WIDE DESKTOP */
-@media (min-width: 1440px) {
-  .page-inner { max-width: 1180px; }
-  #book-list, #bm-list, #notes-list-container { grid-template-columns: repeat(3, 1fr); }
-  #home-hero { padding: 44px 40px; }
 }
 /* ROUNDED CHAT BAR — interaction pattern only; Holy Bible colors and branding are intentional */
 .qa-reference-page { background: #fbfaf8; color: #1d1d1b; }
@@ -334,8 +324,11 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
 .qa-reference-page .bubble { font-family: Arial, sans-serif; max-width: 88%; border-radius: 18px; padding: 12px 16px; font-size: 15px; line-height: 1.55; box-shadow: none; }
 .qa-reference-page .bubble.user { background: #eeece9; color: #292825; border-radius: 18px 18px 5px 18px; }
 .qa-reference-page .bubble.assistant, .qa-reference-page .bubble.thinking { background: transparent; color: #363431; border: 0; padding-left: 0; font-style: normal; }
-.qa-settings-card { display: block; margin: 12px 0 8px; padding: 14px; border: 1px solid #e5e2dd; border-radius: 18px; background: #fff; box-shadow: 0 8px 24px rgba(50,45,38,.06); font-family: Arial, sans-serif; }
-.qa-action-row, .qa-connector-buttons { display: flex; align-items: center; gap: 8px; }
+.qa-settings-card { display: none; order: 3; margin: 12px 0 8px; padding: 14px; border: 1px solid #e5e2dd; border-radius: 18px; background: #fff; box-shadow: 0 8px 24px rgba(50,45,38,.06); font-family: Arial, sans-serif; }
+.qa-settings-card.is-open { display: block; }
+.qa-settings-heading, .qa-action-row, .qa-connector-buttons { display: flex; align-items: center; gap: 8px; }
+.qa-settings-heading { justify-content: space-between; margin-bottom: 12px; }
+.qa-settings-title { font: 600 14px Arial, sans-serif; color: #e8dfc8; }
 .qa-close-btn { border: 0; background: transparent; color: #d4b896; font-size: 23px; cursor: pointer; }
 .qa-settings-section { padding: 10px 0; border-top: 1px solid #1e3d20; }
 .qa-settings-section:first-of-type { border-top: 0; padding-top: 0; }
@@ -449,50 +442,14 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
     .verse-text { font-family: var(--font-bible) !important; color: var(--text-main) !important; }
     .bubble { font-family: var(--font-ai) !important; color: var(--text-main) !important; }
     .answer-heading, .suggested-questions-container { font-family: var(--font-ai) !important; }
-
-    /* THEME COVERAGE — buttons, lists, chat, settings panel */
-    .quick-book-btn, .testament-tab:not(.active) { background: var(--input-bg) !important; color: var(--text-muted) !important; border-color: var(--border-color) !important; }
-    .quick-book-btn:hover { background: var(--accent-gold) !important; color: var(--nav-bg) !important; border-color: var(--accent-gold) !important; }
-    .testament-tab.active { background: var(--accent-gold) !important; color: var(--nav-bg) !important; border-color: var(--accent-gold) !important; }
-    .book-card:hover, .chapter-card:hover { background: color-mix(in srgb, var(--accent-gold) 8%, var(--card-bg)) !important; border-color: var(--accent-gold) !important; }
-    .chapter-card.read { background: color-mix(in srgb, var(--accent-gold) 14%, var(--card-bg)) !important; border-color: color-mix(in srgb, var(--accent-gold) 55%, var(--border-color)) !important; }
-    .chapter-card.read:hover { border-color: var(--accent-gold) !important; }
-    .book-card-arrow { color: var(--border-color) !important; }
-    .book-card:hover .book-card-arrow { color: var(--accent-gold) !important; }
-    .book-card-chapters { background: color-mix(in srgb, var(--accent-gold) 10%, transparent) !important; border-color: color-mix(in srgb, var(--accent-gold) 20%, transparent) !important; }
-    .category-label { color: var(--text-muted) !important; }
-    .chapter-check { color: var(--accent-gold) !important; }
-    .bm-icon { color: var(--border-color) !important; }
-    .verse-row.bookmarked .bm-icon { color: var(--accent-gold) !important; }
-    .bm-card, .result-text { background: var(--card-bg) !important; border-color: var(--border-color) !important; color: var(--text-main) !important; }
-    .bm-card:hover { border-color: var(--accent-gold) !important; }
-    .bm-ref, .result-ref { color: var(--accent-gold) !important; }
-    .bm-ref:hover, .result-ref:hover { color: var(--text-main) !important; }
-    .bm-text { color: var(--text-main) !important; }
-    .remove-btn { color: var(--text-muted) !important; }
-    .empty-state, .empty-title { color: var(--text-muted) !important; }
-    .progress-bar-fill { background: linear-gradient(90deg, color-mix(in srgb, var(--accent-gold) 45%, var(--card-bg)), var(--accent-gold)) !important; }
-    .suggested-pill { background: color-mix(in srgb, var(--accent-gold) 10%, transparent) !important; border-color: color-mix(in srgb, var(--accent-gold) 30%, transparent) !important; color: var(--text-main) !important; }
-    .suggested-pill:hover { background: var(--accent-gold) !important; color: var(--nav-bg) !important; border-color: var(--accent-gold) !important; }
-    .loading-dots span { background: var(--accent-gold) !important; }
-    .bubble.thinking { background: color-mix(in srgb, var(--accent-gold) 6%, transparent) !important; border-left-color: var(--accent-gold) !important; }
-    .bubble.assistant { border-left-color: var(--accent-gold) !important; }
-    .bubble.user, .qa-reference-page .bubble.user { background: var(--accent-gold) !important; color: var(--nav-bg) !important; }
-    .qa-composer, .qa-reference-page .qa-composer { background: linear-gradient(transparent, var(--bg-grad-1) 20%) !important; }
-    .qa-input-row { background: var(--card-bg) !important; border-color: var(--border-color) !important; }
-    .qa-bot-btn { background: var(--input-bg) !important; color: var(--text-main) !important; }
-    .qa-send-btn { background: var(--accent-gold) !important; color: var(--nav-bg) !important; }
-    .qa-section-label, .qa-status { color: var(--text-muted) !important; }
-    .qa-active-provider, .connector-icon { color: var(--accent-gold) !important; }
-    .qa-connector-btn { background: var(--input-bg) !important; border-color: var(--border-color) !important; color: var(--text-main) !important; }
-    .qa-connector-btn.active { border-color: var(--accent-gold) !important; color: var(--accent-gold) !important; }
-    .qa-clear-btn, .qa-refresh-btn { color: var(--accent-gold) !important; }
+    #qa-settings.qa-global-settings { position: fixed; top: 76px; left: 20px; z-index: 260; width: min(440px, calc(100vw - 40px)); max-height: calc(100vh - 94px); overflow-y: auto; margin: 0; }
     .settings-field-label { display: block; color: var(--text-muted); font: 600 11px/1.2 var(--font-interface); letter-spacing: .04em; text-transform: uppercase; }
     .verse-tools { display: flex; align-items: center; gap: 8px; flex-shrink: 0; padding-top: 1px; }
     .tts-btn { width: 30px; height: 30px; border: 1px solid var(--border-color); border-radius: 50%; background: transparent; color: var(--accent-gold); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; transition: transform .16s ease-out, background .16s ease-out, color .16s ease-out; }
     .tts-btn:hover, .tts-btn.speaking { background: var(--accent-gold); color: var(--nav-bg); transform: scale(1.05); }
     .tts-btn:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
     .assistive-menu-follow { transform-origin: center bottom; }
+    @media (max-width: 560px) { #qa-settings.qa-global-settings { top: 68px; left: 10px; width: calc(100vw - 20px); max-height: calc(100vh - 80px); } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
     #offline-indicator { position: fixed; left: 50%; bottom: 16px; z-index: 10020; transform: translate(-50%, 120px); opacity: 0; pointer-events: none; max-width: min(92vw, 560px); padding: 10px 14px; border: 1px solid var(--border-color); border-radius: 999px; background: var(--card-bg); color: var(--text-main); box-shadow: 0 10px 30px rgba(0,0,0,.35); font-size: 12px; line-height: 1.35; text-align: center; transition: transform .22s cubic-bezier(.23,1,.32,1), opacity .22s ease; }
     #offline-indicator.is-visible { transform: translate(-50%, 0); opacity: 1; }
@@ -559,7 +516,8 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
     <button class="nav-tab" data-page="browse">📖 Browse</button> 
     <button class="nav-tab" data-page="notes">📝 Bible Notes</button> 
     <button class="nav-tab" data-page="bookmarks">🔖 <span id="bm-label">Saved</span></button> 
-    <button class="nav-tab" data-page="qa">✨ Ask AI</button> 
+    <button class="nav-tab" data-page="qa">✨ Ask AI</button>
+    <button class="nav-tab" data-page="settings">⚙ Settings</button>
     <div id="nav-streak-badge" style="background: rgba(201,168,76,0.15); border: 1px solid #c9a84c; border-radius: 20px; padding: 4px 10px; font-size: 12px; color: #c9a84c; font-weight: 700; display: flex; align-items: center; gap: 4px; margin-left: 6px;">
      🔥 <span id="streak-count">1</span> Day Streak
     </div>
@@ -795,19 +753,8 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
        <p>Try: "Who was Jesus?" or "What is the meaning of Psalm 23?"</p> 
       </div> 
      </div> 
-      <form id="qa-form" class="qa-composer"> 
-       <div class="qa-input-row"> 
-        <input class="qa-input" id="qa-input" placeholder="Ask the Bible chatbot…"><button class="qa-send-btn" id="qa-send-btn" type="submit" aria-label="Send question">➤</button>
-       </div> 
-      </form>
-    </div> 
-   </section> <!-- SETTINGS (separate page, reachable from any page via the Holy Bible logo/title) -->
-   <section id="page-settings" class="page">
-    <div class="page-inner">
-     <button class="back-btn" onclick="goBack('home')">← Back</button>
-     <h2 class="page-title">⚙ Bible App Settings</h2>
-     <p class="page-hint">Customize your theme, typography, and AI provider.</p>
-     <div id="qa-settings" class="qa-settings-card is-open" aria-label="Bible app settings">
+      <div id="qa-settings" class="qa-settings-card qa-global-settings" aria-label="Bible app settings">
+       <div class="qa-settings-heading"><span class="qa-settings-title">⚙ Bible App Settings</span><button class="qa-close-btn" id="qa-settings-close" type="button" aria-label="Close connector menu">×</button></div>
        <div class="qa-settings-section">
         <div class="qa-section-label">App Theme</div>
         <select class="qa-model-select" id="theme-select" onchange="changeTheme(this.value)" style="width: 100%; margin-top: 4px;">
@@ -887,11 +834,26 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
         <button class="ghost-btn" type="button" onclick="handleLogout()" style="width: 100%; text-align: center; border-color: #e05c4a; color: #e05c4a;">🚪 Log Out</button>
        </div>
        <p id="openrouter-status" class="qa-status">Keys are kept securely in memory only for this session.</p>
-     </div>
+      </div>
+      <form id="qa-form" class="qa-composer"> 
+       <div class="qa-input-row"> 
+        <input class="qa-input" id="qa-input" placeholder="Ask the Bible chatbot…"><button class="qa-send-btn" id="qa-send-btn" type="submit" aria-label="Send question">➤</button>
+       </div> 
+      </form>
+    </div> 
+   </section>
+   <section id="page-settings" class="page" aria-label="Bible app settings">
+    <div class="page-inner">
+     <h2 class="page-title">Settings</h2>
+     <p class="page-hint">Manage account preferences, typography, AI providers, model selection, and provider credentials in one dedicated place.</p>
+     <div class="settings-intro"><strong>Settings stay out of AI Scholar.</strong><p>The AI page is now focused solely on conversations. This page contains every account, key, theme, font, and provider setting.</p></div>
+     <div id="settings-slot"></div>
     </div>
    </section>
   </main> 
   <script src="app.js"></script> 
+
+  <script src="enhancements.js"></script>
  
 <script type="text/javascript" id="dcoder_script">'use strict';
 
@@ -1752,21 +1714,11 @@ function askSuggestedQuestion(q) {
 }
 
 function toggleBibleSettings() {
-  navigateTo("settings");
-  syncAiProviderUi();
-  const themeSelect = document.getElementById("theme-select");
-  if (themeSelect) setTimeout(function() { themeSelect.focus(); }, 0);
+  // Settings are intentionally reachable only from the dedicated Settings navigation entry.
+  return false;
 }
-const navLogo = document.getElementById("nav-logo");
-if (navLogo) {
-  navLogo.addEventListener("click", toggleBibleSettings);
-  navLogo.addEventListener("keydown", function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleBibleSettings(); } });
-}
-const homeBibleTitle = document.getElementById("home-bible-title");
-if (homeBibleTitle) {
-  homeBibleTitle.addEventListener("click", toggleBibleSettings);
-  homeBibleTitle.addEventListener("keydown", function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleBibleSettings(); } });
-}
+const settingsClose = document.getElementById("qa-settings-close");
+if (settingsClose) settingsClose.addEventListener("click", function() { switchPage("home"); });
 
 function appendBubble(role, text) {
   const msgs = document.getElementById("qa-messages");
@@ -1902,12 +1854,12 @@ async function handleAuthSubmit(event) {
     showApp();
     flushOfflineQueue();
     
-    // Populate settings with returned keys
-    if (data.user.openrouter_key) {
-      document.getElementById("openrouter-key").value = data.user.openrouter_key;
-    }
-    if (data.user.huggingface_key) {
-      document.getElementById("huggingface-key").value = data.user.huggingface_key;
+    // Provider credentials are write-only. The Settings page indicates their saved state without returning raw values.
+    const providerStatus = document.getElementById("openrouter-status");
+    if (providerStatus && data.user) {
+      providerStatus.textContent = data.user.openrouter_key_set || data.user.huggingface_key_set
+        ? "Provider credentials are saved to your account. Enter a key in Settings for this browser session when needed."
+        : "Add a provider credential on the dedicated Settings page to begin an AI session.";
     }
     loadOpenRouterModels();
   } catch (err) {
@@ -1927,8 +1879,12 @@ async function fetchUserProfile(token) {
     if (!res.ok) throw new Error("Session expired");
     const user = await res.json();
     if (user.username) localStorage.setItem("bible_username", user.username);
-    if (user.openrouter_key) document.getElementById("openrouter-key").value = user.openrouter_key;
-    if (user.huggingface_key) document.getElementById("huggingface-key").value = user.huggingface_key;
+    const providerStatus = document.getElementById("openrouter-status");
+    if (providerStatus) {
+      providerStatus.textContent = user.openrouter_key_set || user.huggingface_key_set
+        ? "Provider credentials are saved to your account. Enter a key in Settings for this browser session when needed."
+        : "Add a provider credential on the dedicated Settings page to begin an AI session.";
+    }
     showApp();
     flushOfflineQueue();
   } catch (err) {
