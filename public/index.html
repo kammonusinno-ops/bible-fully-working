@@ -517,7 +517,6 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
     <button class="nav-tab" data-page="notes">📝 Bible Notes</button> 
     <button class="nav-tab" data-page="bookmarks">🔖 <span id="bm-label">Saved</span></button> 
     <button class="nav-tab" data-page="qa">✨ Ask AI</button>
-    <button class="nav-tab" data-page="settings">⚙ Settings</button>
     <div id="nav-streak-badge" style="background: rgba(201,168,76,0.15); border: 1px solid #c9a84c; border-radius: 20px; padding: 4px 10px; font-size: 12px; color: #c9a84c; font-weight: 700; display: flex; align-items: center; gap: 4px; margin-left: 6px;">
      🔥 <span id="streak-count">1</span> Day Streak
     </div>
@@ -853,6 +852,7 @@ body { font-family: 'Lora', Georgia, serif; background: linear-gradient(135deg, 
   </main> 
   <script src="app.js"></script> 
 
+  <script src="theme-packs/base-theme.js"></script>
   <script src="enhancements.js"></script>
  
 <script type="text/javascript" id="dcoder_script">'use strict';
@@ -1714,8 +1714,15 @@ function askSuggestedQuestion(q) {
 }
 
 function toggleBibleSettings() {
-  // Settings are intentionally reachable only from the dedicated Settings navigation entry.
-  return false;
+  switchPage("settings");
+  const settings = document.getElementById("qa-settings");
+  if (settings) settings.classList.remove("is-open");
+  if (typeof syncAiProviderUi === "function") syncAiProviderUi();
+}
+const navLogo = document.getElementById("nav-logo");
+if (navLogo) {
+  navLogo.addEventListener("click", toggleBibleSettings);
+  navLogo.addEventListener("keydown", function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleBibleSettings(); } });
 }
 const settingsClose = document.getElementById("qa-settings-close");
 if (settingsClose) settingsClose.addEventListener("click", function() { switchPage("home"); });
@@ -1744,6 +1751,7 @@ function changeTheme(themeName) {
   if (knownThemes.indexOf(themeName) === -1) themeName = "forest";
   document.body.className = themeName === "forest" ? "" : "theme-" + themeName;
   localStorage.setItem("bible_theme", themeName);
+  if (typeof window.applyDownloadedThemePhoto === "function") window.applyDownloadedThemePhoto(themeName);
   const select = document.getElementById("theme-select");
   if (select) select.value = themeName;
 }
@@ -1824,6 +1832,28 @@ function toggleConnectorsPanel() {
   }
 }
 
+function showAuthNotice(kind, title, detail) {
+  const errorDiv = document.getElementById("auth-error");
+  if (!errorDiv) return;
+  errorDiv.className = "auth-notice " + (kind === "warning" ? "is-warning" : "is-error");
+  errorDiv.innerHTML = "<strong>" + title + "</strong><span>" + detail + "</span>";
+  errorDiv.style.display = "block";
+}
+
+function loginFailureNotice(status, message, registering) {
+  const normalized = String(message || "").toLowerCase();
+  if (status === 400 && normalized.indexOf("already exists") !== -1) {
+    return { title: "That username is already registered.", detail: "Switch to Sign In, or choose a different username." };
+  }
+  if (status === 400 || status === 401 || status === 403) {
+    return { title: registering ? "We could not create that account." : "We could not sign you in.", detail: registering ? "Check the required details and try another username if it is already in use." : "Check your username and password, then try again." };
+  }
+  if (status >= 500) {
+    return { title: "The study service is temporarily unavailable.", detail: "Your account has not changed. Please wait a moment and try again." };
+  }
+  return { title: "The sign-in request could not be completed.", detail: "Check your connection and try again." };
+}
+
 async function handleAuthSubmit(event) {
   event.preventDefault();
   const username = document.getElementById("auth-username").value.trim();
@@ -1836,8 +1866,7 @@ async function handleAuthSubmit(event) {
   const endpoint = isRegisterMode ? "/api/auth/register" : "/api/auth/login";
 
   if (!navigator.onLine) {
-    errorDiv.textContent = "You are offline. Sign in or register once you reconnect; cached Scripture and local study tools remain available after that.";
-    errorDiv.style.display = "block";
+    showAuthNotice("warning", "You are offline.", "Reconnect to sign in or register. Cached Scripture and local study tools remain available on this device.");
     return;
   }
   try {
@@ -1846,8 +1875,13 @@ async function handleAuthSubmit(event) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password, openrouter_key, huggingface_key })
     });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || "Authentication failed");
+    let data = {};
+    try { data = await res.json(); } catch (_) { data = {}; }
+    if (!res.ok) {
+      const notice = loginFailureNotice(res.status, data.error, isRegisterMode);
+      showAuthNotice("error", notice.title, notice.detail);
+      return;
+    }
 
     localStorage.setItem("bible_token", data.token);
     if (data.user && data.user.username) localStorage.setItem("bible_username", data.user.username);
@@ -1863,8 +1897,7 @@ async function handleAuthSubmit(event) {
     }
     loadOpenRouterModels();
   } catch (err) {
-    errorDiv.textContent = err.message;
-    errorDiv.style.display = "block";
+    showAuthNotice("error", "We could not reach the study service.", "Check your internet connection, then try again. Your username and password were not changed.");
   }
 }
 
@@ -1895,6 +1928,7 @@ async function fetchUserProfile(token) {
     }
     localStorage.removeItem("bible_token");
     showAuth();
+    showAuthNotice("warning", "Your saved sign-in has ended.", "Please sign in again to reconnect your notes, study progress, and scores.");
   }
 }
 

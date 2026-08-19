@@ -6,6 +6,7 @@ const APP_SHELL = [
   "/manifest.json",
   "/csb.json",
   "/ilokano1973.json",
+  "/theme-packs/base-theme.js",
   "/sw.js"
 ];
 const BIBLE_API_ORIGIN = "https://bible.helloao.org/api/";

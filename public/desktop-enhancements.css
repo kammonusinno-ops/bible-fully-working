@@ -31,3 +31,40 @@
 #page-settings .settings-intro { padding: 20px; border: 1px solid var(--border-color); border-radius: 14px; background: color-mix(in srgb, var(--accent-gold) 8%, var(--card-bg)); }
 #page-settings .settings-intro strong { display: block; margin-bottom: 6px; color: var(--accent-gold); font-family: var(--font-bible); font-size: 20px; }
 #page-settings .settings-intro p { margin: 0; color: var(--text-muted); line-height: 1.6; }
+
+/* Photographic atmosphere: the images are muted with layered contrast so Scripture remains readable. */
+body, body.theme-forest { --theme-fallback-photo: radial-gradient(circle at 50% 45%, #3c7348 0%, #132f1c 50%, #07150b 100%); --theme-photo: var(--theme-downloaded-photo, var(--theme-fallback-photo)); --theme-overlay: linear-gradient(125deg, rgba(3, 14, 7, .94), rgba(8, 31, 14, .80) 52%, rgba(2, 10, 5, .93)); }
+body.theme-light { --theme-fallback-photo: radial-gradient(circle at 50% 45%, #dbeaca 0%, #f6f1de 50%, #faf7ed 100%); --theme-photo: var(--theme-downloaded-photo, var(--theme-fallback-photo)); --theme-overlay: linear-gradient(125deg, rgba(248, 247, 239, .94), rgba(241, 247, 234, .78) 55%, rgba(251, 250, 244, .93)); }
+body.theme-dark { --theme-fallback-photo: radial-gradient(circle at 50% 45%, #2a3540 0%, #101419 52%, #020405 100%); --theme-photo: var(--theme-downloaded-photo, var(--theme-fallback-photo)); --theme-overlay: linear-gradient(125deg, rgba(2, 5, 4, .95), rgba(10, 12, 9, .82) 55%, rgba(2, 4, 4, .96)); }
+body.theme-bloom, body.theme-lavender { --theme-fallback-photo: radial-gradient(circle at 50% 45%, #874d7e 0%, #3d2140 53%, #180e20 100%); --theme-photo: var(--theme-downloaded-photo, var(--theme-fallback-photo)); --theme-overlay: linear-gradient(125deg, rgba(32, 10, 30, .90), rgba(68, 31, 68, .72) 55%, rgba(24, 12, 31, .94)); }
+body.theme-ocean { --theme-fallback-photo: radial-gradient(circle at 50% 45%, #3d91a5 0%, #164b5a 55%, #061a25 100%); --theme-photo: var(--theme-downloaded-photo, var(--theme-fallback-photo)); --theme-overlay: linear-gradient(125deg, rgba(5, 24, 31, .93), rgba(14, 61, 73, .70) 55%, rgba(4, 17, 27, .94)); }
+
+#app { background-image: var(--theme-overlay), var(--theme-photo); background-size: cover; background-position: var(--theme-photo-position, center); background-attachment: fixed; }
+#top-nav { background-image: linear-gradient(180deg, rgba(4, 19, 10, .94), rgba(4, 18, 10, .98)), var(--theme-photo) !important; background-size: cover !important; background-position: var(--theme-photo-position, center) !important; }
+#page-qa.qa-reference-page { background: var(--theme-overlay) !important; }
+.card, .stat-box, .book-card, .chapter-card, .qa-settings-card, .api-popup-card { background: color-mix(in srgb, var(--card-bg) 88%, transparent) !important; backdrop-filter: blur(12px); }
+.verse-row { background: color-mix(in srgb, var(--card-bg) 78%, transparent) !important; backdrop-filter: blur(10px); }
+
+.study-pulse { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; margin-top: 20px; padding: 22px; border: 1px solid color-mix(in srgb, var(--accent-gold) 50%, var(--border-color)); border-radius: 16px; background: linear-gradient(135deg, color-mix(in srgb, var(--card-bg) 90%, transparent), color-mix(in srgb, var(--accent-gold) 12%, transparent)); box-shadow: 0 18px 46px rgba(0, 0, 0, .18); backdrop-filter: blur(13px); }
+.study-pulse .pulse-kicker { margin: 0 0 6px; color: var(--accent-gold); font-size: 11px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.study-pulse h3 { margin: 0; color: var(--text-main); font-family: var(--font-bible); font-size: 24px; }
+.study-pulse p { margin: 8px 0 0; color: var(--text-muted); line-height: 1.55; }
+.pulse-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+.pulse-actions button { min-height: 40px; }
+.auth-notice { padding: 11px 13px !important; border-radius: 10px !important; line-height: 1.45 !important; }
+.auth-notice strong { display: block; margin-bottom: 3px; color: #ffe0a5; }
+.auth-notice.is-warning { background: rgba(207, 143, 29, .16) !important; border-color: rgba(228, 169, 58, .55) !important; color: #ffe7b5 !important; }
+.auth-notice.is-error { background: rgba(224, 92, 74, .15) !important; border-color: rgba(224, 92, 74, .48) !important; color: #ffd3ca !important; }
+.theme-downloads { margin-top: 18px; padding: 20px; border: 1px solid color-mix(in srgb, var(--accent-gold) 34%, var(--border-color)); border-radius: 14px; background: color-mix(in srgb, var(--card-bg) 86%, transparent); backdrop-filter: blur(12px); }
+.theme-downloads h3 { margin: 0; color: var(--text-main); font-family: var(--font-bible); font-size: 21px; }
+.theme-downloads > p { margin: 7px 0 16px; color: var(--text-muted); line-height: 1.55; }
+.theme-pack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.theme-pack { padding: 14px; border: 1px solid var(--border-color); border-radius: 12px; background: color-mix(in srgb, var(--card-bg) 82%, transparent); }
+.theme-pack strong, .theme-pack small { display: block; }
+.theme-pack strong { color: var(--text-main); }
+.theme-pack small { margin: 5px 0 10px; color: var(--text-muted); line-height: 1.4; }
+.theme-pack-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.theme-pack button { min-height: 34px; font-size: 12px; }
+.theme-download-status { min-height: 20px; margin: 13px 0 0; color: var(--text-muted); font-size: 12px; }
+
+@media (max-width: 740px) { .study-pulse { grid-template-columns: 1fr; padding: 18px; } .pulse-actions { justify-content: flex-start; } #app { background-attachment: scroll; background-position: var(--theme-photo-mobile-position, var(--theme-photo-position, center)); } }
